@@ -1,0 +1,4656 @@
+1
+00:01:06,560 --> 00:01:10,360
+okay uh hello everyone uh U we organize
+
+2
+00:01:10,360 --> 00:01:13,799
+these uh we we are hting dday today uh
+
+3
+00:01:13,799 --> 00:01:15,640
+we organize these monthly events to talk
+
+4
+00:01:15,640 --> 00:01:19,280
+about tech or the problems or the things
+
+5
+00:01:19,280 --> 00:01:21,640
+that interest Community uh in in their
+
+6
+00:01:21,640 --> 00:01:24,360
+day-to-day life or day-to-day work so
+
+7
+00:01:24,360 --> 00:01:27,280
+today we are going to talk about uh Java
+
+8
+00:01:27,280 --> 00:01:30,240
+link virtual threats uh baves is the
+
+9
+00:01:30,240 --> 00:01:33,720
+speaker he's been working with since
+
+10
+00:01:33,720 --> 00:01:35,079
+past one year and he has almost eight
+
+11
+00:01:35,079 --> 00:01:37,640
+years of experience in the domain that
+
+12
+00:01:37,640 --> 00:01:40,240
+he's working in so most of you must have
+
+13
+00:01:40,240 --> 00:01:42,479
+heard about Java 21 right
+
+14
+00:01:42,479 --> 00:01:45,040
+so yeah so this is this is the topic
+
+15
+00:01:45,040 --> 00:01:46,799
+also if if you are interested in some
+
+16
+00:01:46,799 --> 00:01:48,439
+topic that you have knowledge on and you
+
+17
+00:01:48,439 --> 00:01:50,439
+want to share with some Community uh
+
+18
+00:01:50,439 --> 00:01:52,360
+we'll be happy to host you just give us
+
+19
+00:01:52,360 --> 00:01:56,200
+that talk detail we can make that happen
+
+20
+00:01:56,200 --> 00:02:01,719
+okay okay all lat here part of the J
+
+21
+00:02:01,719 --> 00:02:05,680
+sorry this will be the part of the J yes
+
+22
+00:02:05,680 --> 00:02:08,520
+this will be uh like first uh session in
+
+23
+00:02:08,520 --> 00:02:11,440
+the jvm series uh there will be more
+
+24
+00:02:11,440 --> 00:02:13,640
+many more sessions on the jvm but yeah
+
+25
+00:02:13,640 --> 00:02:15,080
+this is the first session on the jvm
+
+26
+00:02:15,080 --> 00:02:16,760
+series so stick along if you want to
+
+27
+00:02:16,760 --> 00:02:18,280
+learn more on the
+
+28
+00:02:18,280 --> 00:02:21,560
+JM cool uh we can get started uh I think
+
+29
+00:02:21,560 --> 00:02:23,599
+I'm audible to audience
+
+30
+00:02:23,599 --> 00:02:26,599
+on uh online
+
+31
+00:02:26,599 --> 00:02:28,440
+basically am
+
+32
+00:02:28,440 --> 00:02:30,360
+I yeah
+
+33
+00:02:30,360 --> 00:02:33,440
+awesome okay uh so hi everyone as I
+
+34
+00:02:33,440 --> 00:02:35,519
+mentioned my name is baves so today's
+
+35
+00:02:35,519 --> 00:02:38,640
+talk is mostly on the virtual thread uh
+
+36
+00:02:38,640 --> 00:02:41,239
+virtual thread is basically the Oracle
+
+37
+00:02:41,239 --> 00:02:44,280
+guys has done a good job uh in last five
+
+38
+00:02:44,280 --> 00:02:46,480
+years basically they have introduced
+
+39
+00:02:46,480 --> 00:02:49,080
+this part of java 21 released it uh the
+
+40
+00:02:49,080 --> 00:02:51,040
+first introduction happened as part of
+
+41
+00:02:51,040 --> 00:02:53,200
+java 19 then the second preview was
+
+42
+00:02:53,200 --> 00:02:54,720
+released as part of java 20 and now
+
+43
+00:02:54,720 --> 00:02:57,360
+finally it is released so we'll go over
+
+44
+00:02:57,360 --> 00:03:00,319
+it and understand how we should use use
+
+45
+00:03:00,319 --> 00:03:04,159
+it um what are benefits of moving
+
+46
+00:03:04,159 --> 00:03:06,200
+towards virtual thread when should we
+
+47
+00:03:06,200 --> 00:03:07,920
+use it and how it works
+
+48
+00:03:07,920 --> 00:03:10,400
+internally so yeah this is the agenda
+
+49
+00:03:10,400 --> 00:03:13,120
+for today's talk uh we'll go through the
+
+50
+00:03:13,120 --> 00:03:14,120
+need of
+
+51
+00:03:14,120 --> 00:03:16,040
+concurrency understand thread for rec
+
+52
+00:03:16,040 --> 00:03:19,519
+style limitation of native threads and
+
+53
+00:03:19,519 --> 00:03:22,120
+then the ways to overcome limitations
+
+54
+00:03:22,120 --> 00:03:25,400
+and then uh discuss about Loom virtual
+
+55
+00:03:25,400 --> 00:03:27,439
+versus platform threads how it works
+
+56
+00:03:27,439 --> 00:03:29,879
+internally adoption guide and then at
+
+57
+00:03:29,879 --> 00:03:32,959
+the end we can take the questions and
+
+58
+00:03:32,959 --> 00:03:36,360
+feedback okay uh need of
+
+59
+00:03:36,360 --> 00:03:39,080
+concurrency uh so can anyone tell me
+
+60
+00:03:39,080 --> 00:03:42,360
+what is the need of concurrency
+
+61
+00:03:42,360 --> 00:03:45,760
+uh maybe let's make that this talk
+
+62
+00:03:45,760 --> 00:03:49,879
+interactive and you can also speak up if
+
+63
+00:03:49,879 --> 00:03:52,439
+you have anything to say yeah uh to
+
+64
+00:03:52,439 --> 00:03:55,560
+execute multiple task right uh at
+
+65
+00:03:55,560 --> 00:04:00,159
+multiple times uh so it's a kind of a uh
+
+66
+00:04:00,159 --> 00:04:02,280
+worker model right whereas a task has to
+
+67
+00:04:02,280 --> 00:04:05,640
+be done with parallel things say
+
+68
+00:04:05,640 --> 00:04:09,040
+parallel say suppose to be done by
+
+69
+00:04:09,040 --> 00:04:11,879
+threads right yeah but what is the need
+
+70
+00:04:11,879 --> 00:04:15,280
+of executing things parall so it will
+
+71
+00:04:15,280 --> 00:04:18,238
+reduce the uh execution time right if it
+
+72
+00:04:18,238 --> 00:04:20,040
+is taking 10 minutes if you are using
+
+73
+00:04:20,040 --> 00:04:21,918
+concurrency there are chances that it
+
+74
+00:04:21,918 --> 00:04:24,280
+will take some 5 minutes or something
+
+75
+00:04:24,280 --> 00:04:26,560
+like that basically time optimization
+
+76
+00:04:26,560 --> 00:04:29,000
+yeah right so one thing is to utilize
+
+77
+00:04:29,000 --> 00:04:31,800
+the CPU properly uh we don't want CPU to
+
+78
+00:04:31,800 --> 00:04:34,800
+be idle and as you mentioned uh that to
+
+79
+00:04:34,800 --> 00:04:36,880
+fulfill the need of modern application
+
+80
+00:04:36,880 --> 00:04:39,440
+we mostly know that the uh modern
+
+81
+00:04:39,440 --> 00:04:41,039
+application requires high throughput on
+
+82
+00:04:41,039 --> 00:04:44,320
+low latency and today we are going to
+
+83
+00:04:44,320 --> 00:04:46,320
+Target high throughput in the
+
+84
+00:04:46,320 --> 00:04:49,720
+stock okay uh let's take this stock with
+
+85
+00:04:49,720 --> 00:04:53,360
+the one example uh of thread per request
+
+86
+00:04:53,360 --> 00:04:56,240
+style so thread per request style model
+
+87
+00:04:56,240 --> 00:04:59,800
+basically talks about uh assigning one
+
+88
+00:04:59,800 --> 00:05:02,400
+thread for request this is mostly your
+
+89
+00:05:02,400 --> 00:05:04,039
+typical web
+
+90
+00:05:04,039 --> 00:05:06,520
+application works this way whenever you
+
+91
+00:05:06,520 --> 00:05:08,600
+get one any request you will assign one
+
+92
+00:05:08,600 --> 00:05:10,120
+thread for that particular entire
+
+93
+00:05:10,120 --> 00:05:12,000
+request and then that particular request
+
+94
+00:05:12,000 --> 00:05:14,560
+will be responsible to execute entirely
+
+95
+00:05:14,560 --> 00:05:17,800
+right so here we have one uh API called
+
+96
+00:05:17,800 --> 00:05:19,800
+recommend products basically one method
+
+97
+00:05:19,800 --> 00:05:23,280
+where we are passing One customer ID and
+
+98
+00:05:23,280 --> 00:05:25,720
+this particular uh API Returns the
+
+99
+00:05:25,720 --> 00:05:28,919
+product recommended for that customer uh
+
+100
+00:05:28,919 --> 00:05:31,479
+here we are doing three operation one is
+
+101
+00:05:31,479 --> 00:05:33,319
+we are getting the customer we are
+
+102
+00:05:33,319 --> 00:05:35,120
+catching the customer preference we are
+
+103
+00:05:35,120 --> 00:05:37,080
+catching the orders and then we are
+
+104
+00:05:37,080 --> 00:05:39,759
+preparing the recommendation and then
+
+105
+00:05:39,759 --> 00:05:41,639
+returning it if there is nothing to
+
+106
+00:05:41,639 --> 00:05:43,919
+return then we returning the empty list
+
+107
+00:05:43,919 --> 00:05:46,120
+uh anyone wants to talk about what are
+
+108
+00:05:46,120 --> 00:05:47,800
+the pro what pros and cons you can see
+
+109
+00:05:47,800 --> 00:05:50,479
+when you look at the
+
+110
+00:05:52,759 --> 00:05:55,759
+code anything that you find that okay
+
+111
+00:05:55,759 --> 00:05:59,240
+this is good something which you find
+
+112
+00:05:59,240 --> 00:06:02,440
+weird some scaling
+
+113
+00:06:04,639 --> 00:06:07,240
+issues okay so if we talk about good
+
+114
+00:06:07,240 --> 00:06:09,840
+part you can see that this code is
+
+115
+00:06:09,840 --> 00:06:12,520
+simple enough to understand all right
+
+116
+00:06:12,520 --> 00:06:14,800
+simple enough to reason about because
+
+117
+00:06:14,800 --> 00:06:16,840
+you know the flow goes from top to
+
+118
+00:06:16,840 --> 00:06:19,560
+bottom you first fetching the customer
+
+119
+00:06:19,560 --> 00:06:20,479
+then you're fetching the customer
+
+120
+00:06:20,479 --> 00:06:23,440
+preference order service and then the uh
+
+121
+00:06:23,440 --> 00:06:25,880
+preparing the product recommendation so
+
+122
+00:06:25,880 --> 00:06:28,639
+for example something goes wrong in any
+
+123
+00:06:28,639 --> 00:06:30,360
+of those particular
+
+124
+00:06:30,360 --> 00:06:32,240
+call that we are making you know that
+
+125
+00:06:32,240 --> 00:06:33,800
+the flow will be stopped at that point
+
+126
+00:06:33,800 --> 00:06:35,000
+of
+
+127
+00:06:35,000 --> 00:06:38,199
+time also it is easier to test and
+
+128
+00:06:38,199 --> 00:06:42,280
+easier to read right uh but do you think
+
+129
+00:06:42,280 --> 00:06:44,759
+this is scalable code I'll tell you for
+
+130
+00:06:44,759 --> 00:06:46,160
+example let's say this fetch customer
+
+131
+00:06:46,160 --> 00:06:48,280
+service and these all three calls which
+
+132
+00:06:48,280 --> 00:06:50,560
+are we are doing is an external call so
+
+133
+00:06:50,560 --> 00:06:52,240
+we are calling the other service to
+
+134
+00:06:52,240 --> 00:06:54,639
+fetch the customer detail we are calling
+
+135
+00:06:54,639 --> 00:06:56,599
+some other service to fet the customer
+
+136
+00:06:56,599 --> 00:06:58,440
+preference and finally fet the order
+
+137
+00:06:58,440 --> 00:07:00,479
+history
+
+138
+00:07:00,479 --> 00:07:02,919
+so assume that order history takes 1
+
+139
+00:07:02,919 --> 00:07:06,680
+second uh to get response the customer
+
+140
+00:07:06,680 --> 00:07:08,639
+preference takes around 500 milliseconds
+
+141
+00:07:08,639 --> 00:07:10,840
+and this takes around 400 milliseconds
+
+142
+00:07:10,840 --> 00:07:12,759
+and we just require only 50 milliseconds
+
+143
+00:07:12,759 --> 00:07:14,599
+in order to prepare the product
+
+144
+00:07:14,599 --> 00:07:17,759
+recommendation so entirely we are
+
+145
+00:07:17,759 --> 00:07:18,879
+waiting for
+
+146
+00:07:18,879 --> 00:07:23,120
+1.95 seconds to to return the response
+
+147
+00:07:23,120 --> 00:07:26,759
+right uh any answer like how can we
+
+148
+00:07:26,759 --> 00:07:28,319
+improve
+
+149
+00:07:28,319 --> 00:07:31,199
+this
+
+150
+00:07:31,199 --> 00:07:32,759
+we
+
+151
+00:07:32,759 --> 00:07:35,280
+use
+
+152
+00:07:35,280 --> 00:07:36,879
+okay
+
+153
+00:07:36,879 --> 00:07:40,039
+okay so and and what is the uh problem
+
+154
+00:07:40,039 --> 00:07:42,599
+with this code so thread per request
+
+155
+00:07:42,599 --> 00:07:45,919
+style basically governs by little law so
+
+156
+00:07:45,919 --> 00:07:48,840
+ler loss tells that okay a throughput is
+
+157
+00:07:48,840 --> 00:07:52,039
+basically your behaves from in terms of
+
+158
+00:07:52,039 --> 00:07:54,919
+number of concurrency divide by latency
+
+159
+00:07:54,919 --> 00:07:57,560
+so for example let's say if you have 10
+
+160
+00:07:57,560 --> 00:07:58,879
+concurrent requests which is being
+
+161
+00:07:58,879 --> 00:08:02,080
+processed in 50 milliseconds it means
+
+162
+00:08:02,080 --> 00:08:04,039
+your application is able to process 200
+
+163
+00:08:04,039 --> 00:08:07,520
+request per second right uh if you want
+
+164
+00:08:07,520 --> 00:08:09,919
+to increase throughput then what are the
+
+165
+00:08:09,919 --> 00:08:12,000
+ways either you need to increase the
+
+166
+00:08:12,000 --> 00:08:13,319
+number of concurrent request that you
+
+167
+00:08:13,319 --> 00:08:17,080
+can support or you need to decrease the
+
+168
+00:08:17,080 --> 00:08:19,840
+latency now uh for example lat if we
+
+169
+00:08:19,840 --> 00:08:21,120
+talk about the external calls the
+
+170
+00:08:21,120 --> 00:08:23,960
+latency is not in your hand um you might
+
+171
+00:08:23,960 --> 00:08:25,680
+not be able to change the latency
+
+172
+00:08:25,680 --> 00:08:28,360
+because it's somebody else's service and
+
+173
+00:08:28,360 --> 00:08:29,960
+you don't have control over it so one
+
+174
+00:08:29,960 --> 00:08:32,000
+way to increase the request is by
+
+175
+00:08:32,000 --> 00:08:34,120
+basically increasing the or support
+
+176
+00:08:34,120 --> 00:08:35,599
+supporting the number of concent
+
+177
+00:08:35,599 --> 00:08:38,479
+requests right so for example if you
+
+178
+00:08:38,479 --> 00:08:42,080
+have to uh support 100 request uh if you
+
+179
+00:08:42,080 --> 00:08:43,479
+have to increase the throughput to 200
+
+180
+00:08:43,479 --> 00:08:45,600
+200 2,000 request per second you need at
+
+181
+00:08:45,600 --> 00:08:48,839
+least 100 uh request con request need to
+
+182
+00:08:48,839 --> 00:08:50,480
+be supported here if you want to
+
+183
+00:08:50,480 --> 00:08:54,200
+increase to 20,000 it will go to 10,000
+
+184
+00:08:54,200 --> 00:08:56,519
+if you increase more and go to 1
+
+185
+00:08:56,519 --> 00:08:59,600
+million or 2 million request per second
+
+186
+00:08:59,600 --> 00:09:01,360
+it means you
+
+187
+00:09:01,360 --> 00:09:05,120
+need 100,000 request to be supported
+
+188
+00:09:05,120 --> 00:09:07,839
+concurrently now uh what's the problem
+
+189
+00:09:07,839 --> 00:09:12,640
+with the with that so um the limitation
+
+190
+00:09:12,640 --> 00:09:14,200
+can we do that like can we
+
+191
+00:09:14,200 --> 00:09:17,360
+create 100,000
+
+192
+00:09:17,360 --> 00:09:20,399
+threads because we we said that okay the
+
+193
+00:09:20,399 --> 00:09:22,640
+uh in thread per request style we assign
+
+194
+00:09:22,640 --> 00:09:25,120
+one thread to process the entire request
+
+195
+00:09:25,120 --> 00:09:26,519
+so when we are saying that we need to if
+
+196
+00:09:26,519 --> 00:09:28,839
+we are want to increase the throughput
+
+197
+00:09:28,839 --> 00:09:31,079
+of the application at least we need to
+
+198
+00:09:31,079 --> 00:09:33,640
+have those many number of threads
+
+199
+00:09:33,640 --> 00:09:38,200
+created and they need to serve the
+
+200
+00:09:38,640 --> 00:09:41,200
+request so you guys might know that
+
+201
+00:09:41,200 --> 00:09:44,000
+creating those many threads are not
+
+202
+00:09:44,000 --> 00:09:47,200
+practical uh and the reason is basic of
+
+203
+00:09:47,200 --> 00:09:48,399
+basically the limitation of platform
+
+204
+00:09:48,399 --> 00:09:51,160
+threats So jvm So currently the native
+
+205
+00:09:51,160 --> 00:09:54,360
+threads that we are having those threads
+
+206
+00:09:54,360 --> 00:09:56,480
+are basically thin wrapper around the
+
+207
+00:09:56,480 --> 00:09:58,720
+kernel or the oos thread so whatever you
+
+208
+00:09:58,720 --> 00:10:01,120
+assign to that those particular jvm
+
+209
+00:10:01,120 --> 00:10:03,120
+thread is basically being hand over to
+
+210
+00:10:03,120 --> 00:10:04,399
+the kernel thread and kernel thread
+
+211
+00:10:04,399 --> 00:10:07,440
+performs the operation uh so if there is
+
+212
+00:10:07,440 --> 00:10:10,000
+any blocking call it means your kernel
+
+213
+00:10:10,000 --> 00:10:11,800
+thread is going to be
+
+214
+00:10:11,800 --> 00:10:15,360
+blocked right also the the threads
+
+215
+00:10:15,360 --> 00:10:18,720
+basically uh when you create a thread so
+
+216
+00:10:18,720 --> 00:10:20,519
+typically on uh
+
+217
+00:10:20,519 --> 00:10:26,000
+x64 machines it takes 1 MB of size stack
+
+218
+00:10:26,000 --> 00:10:30,120
+size and on x86 machine takes around 512
+
+219
+00:10:30,120 --> 00:10:32,320
+KB of a stack size so for example if you
+
+220
+00:10:32,320 --> 00:10:36,360
+are creating millions or 100,000 threads
+
+221
+00:10:36,360 --> 00:10:37,800
+imagine the size that you require in
+
+222
+00:10:37,800 --> 00:10:40,120
+order to create those number of
+
+223
+00:10:40,120 --> 00:10:43,240
+threads right uh then that's only the
+
+224
+00:10:43,240 --> 00:10:44,800
+stack size then you have the Heap size
+
+225
+00:10:44,800 --> 00:10:49,040
+as well so you need a massive machine to
+
+226
+00:10:49,040 --> 00:10:50,279
+at least support
+
+227
+00:10:50,279 --> 00:10:52,320
+it
+
+228
+00:10:52,320 --> 00:10:54,800
+uh then the high memory foot okay the
+
+229
+00:10:54,800 --> 00:10:56,200
+thread creation is also expensive it
+
+230
+00:10:56,200 --> 00:10:58,600
+just okay for example let's say for some
+
+231
+00:10:58,600 --> 00:11:00,800
+reason you you are able to create th000
+
+232
+00:11:00,800 --> 00:11:04,399
+or 100,000 threads but the time it takes
+
+233
+00:11:04,399 --> 00:11:06,639
+to create a thread is also a heavy
+
+234
+00:11:06,639 --> 00:11:08,160
+operation also the context switching
+
+235
+00:11:08,160 --> 00:11:09,920
+right so when you have to switch there
+
+236
+00:11:09,920 --> 00:11:12,360
+many threads uh the time it takes is
+
+237
+00:11:12,360 --> 00:11:15,639
+huge so that's why we cannot create so
+
+238
+00:11:15,639 --> 00:11:17,160
+that's why like we don't have option to
+
+239
+00:11:17,160 --> 00:11:21,440
+create as many threads as we want uh so
+
+240
+00:11:21,440 --> 00:11:23,839
+what are the ways to solve this things
+
+241
+00:11:23,839 --> 00:11:27,000
+so people has come up with the ideas of
+
+242
+00:11:27,000 --> 00:11:29,360
+for example creating a thread pool so in
+
+243
+00:11:29,360 --> 00:11:31,639
+thread pool what you typically do is you
+
+244
+00:11:31,639 --> 00:11:34,480
+create some amount of threads uh for
+
+245
+00:11:34,480 --> 00:11:35,519
+example
+
+246
+00:11:35,519 --> 00:11:38,639
+tomates 200 threads by default and then
+
+247
+00:11:38,639 --> 00:11:40,200
+you create number of tasks and assign
+
+248
+00:11:40,200 --> 00:11:42,360
+those tasks to those thread pools so
+
+249
+00:11:42,360 --> 00:11:45,240
+then thread pool basically assign
+
+250
+00:11:45,240 --> 00:11:48,200
+whichever thread is uh available it will
+
+251
+00:11:48,200 --> 00:11:50,120
+pick up any task from the queue and
+
+252
+00:11:50,120 --> 00:11:53,040
+start processing it but now what's the
+
+253
+00:11:53,040 --> 00:11:55,160
+problem with the thread poing so in
+
+254
+00:11:55,160 --> 00:11:56,920
+thread pooling you only have The Limited
+
+255
+00:11:56,920 --> 00:11:59,040
+number of requ threads so for for
+
+256
+00:11:59,040 --> 00:12:01,480
+example if you have 200 threads so at a
+
+257
+00:12:01,480 --> 00:12:04,120
+time and if your task is a blocking task
+
+258
+00:12:04,120 --> 00:12:05,519
+right you are doing you are making a
+
+259
+00:12:05,519 --> 00:12:07,600
+call which is like external call and it
+
+260
+00:12:07,600 --> 00:12:09,160
+is basically a blocking call then what
+
+261
+00:12:09,160 --> 00:12:12,839
+happens is uh 200 threads let's say even
+
+262
+00:12:12,839 --> 00:12:14,800
+in from the 200 threads if 30 or 40
+
+263
+00:12:14,800 --> 00:12:16,920
+threads are blocked it means you wasting
+
+264
+00:12:16,920 --> 00:12:17,839
+some
+
+265
+00:12:17,839 --> 00:12:20,760
+CPU because the threads are blocked uh
+
+266
+00:12:20,760 --> 00:12:22,560
+it cannot perform anything else and if
+
+267
+00:12:22,560 --> 00:12:24,600
+let's say all the 200 threads are
+
+268
+00:12:24,600 --> 00:12:27,320
+blocked and if you have massive load
+
+269
+00:12:27,320 --> 00:12:30,639
+then in that Cas B your service will um
+
+270
+00:12:30,639 --> 00:12:32,440
+not perform well so those are the
+
+271
+00:12:32,440 --> 00:12:33,680
+scaling issue that we see with the
+
+272
+00:12:33,680 --> 00:12:36,800
+thread pooling so then what is the
+
+273
+00:12:36,800 --> 00:12:39,680
+solution so as you mentioned that okay
+
+274
+00:12:39,680 --> 00:12:41,720
+we can also use the completable future
+
+275
+00:12:41,720 --> 00:12:43,199
+or future basically un synchronous way
+
+276
+00:12:43,199 --> 00:12:44,920
+of handling things so there are two
+
+277
+00:12:44,920 --> 00:12:47,279
+things we can do in terms of unson style
+
+278
+00:12:47,279 --> 00:12:51,399
+so earlier we used to do async blocking
+
+279
+00:12:51,399 --> 00:12:53,519
+what is async blocking so for example we
+
+280
+00:12:53,519 --> 00:12:56,079
+had this particular flow of
+
+281
+00:12:56,079 --> 00:12:59,199
+uh the U execution so we you were
+
+282
+00:12:59,199 --> 00:13:01,639
+fetching the order then the customer
+
+283
+00:13:01,639 --> 00:13:03,720
+preference or the customer and they were
+
+284
+00:13:03,720 --> 00:13:05,639
+taking basically this amount of time 1
+
+285
+00:13:05,639 --> 00:13:08,560
+second 5 milliseconds 400 milliseconds
+
+286
+00:13:08,560 --> 00:13:10,399
+and then the 50 milliseconds in total it
+
+287
+00:13:10,399 --> 00:13:13,959
+was taking 1.95 Mill seconds so if you
+
+288
+00:13:13,959 --> 00:13:15,639
+want to improve it one way to do is
+
+289
+00:13:15,639 --> 00:13:18,480
+basically you call fetch order and Par
+
+290
+00:13:18,480 --> 00:13:19,920
+you call fetch customer preference and
+
+291
+00:13:19,920 --> 00:13:22,519
+the fetch customer so here while the
+
+292
+00:13:22,519 --> 00:13:24,320
+fetch order is in progress you will be
+
+293
+00:13:24,320 --> 00:13:26,800
+able to fetch the other two things and
+
+294
+00:13:26,800 --> 00:13:29,079
+then construct the response so in total
+
+295
+00:13:29,079 --> 00:13:32,480
+it goes around 1.05 seconds uh here you
+
+296
+00:13:32,480 --> 00:13:34,519
+are when you are saying a sync blocking
+
+297
+00:13:34,519 --> 00:13:36,160
+what it means is you are creating three
+
+298
+00:13:36,160 --> 00:13:38,440
+different threads or assigning this task
+
+299
+00:13:38,440 --> 00:13:40,920
+to three different threads to fetch this
+
+300
+00:13:40,920 --> 00:13:44,120
+um data and then construct the response
+
+301
+00:13:44,120 --> 00:13:47,399
+right so essentially here you have
+
+302
+00:13:47,399 --> 00:13:49,680
+better approach but still you are
+
+303
+00:13:49,680 --> 00:13:52,800
+blocked for that particular time and uh
+
+304
+00:13:52,800 --> 00:13:56,759
+you are wasting some of the uh CPU there
+
+305
+00:13:56,759 --> 00:14:00,519
+so if we then the next thing that we can
+
+306
+00:14:00,519 --> 00:14:02,639
+okay the the solution for or the
+
+307
+00:14:02,639 --> 00:14:04,440
+optimization that happened on top of
+
+308
+00:14:04,440 --> 00:14:07,399
+this is coming up with the non-blocking
+
+309
+00:14:07,399 --> 00:14:09,639
+stack so then people has come up with
+
+310
+00:14:09,639 --> 00:14:12,440
+the non blocking stack you might know uh
+
+311
+00:14:12,440 --> 00:14:16,360
+for example Java has um introduced nio
+
+312
+00:14:16,360 --> 00:14:18,959
+stack similarly there are many other
+
+313
+00:14:18,959 --> 00:14:20,199
+languages which are using the
+
+314
+00:14:20,199 --> 00:14:22,839
+non-blocking stack uh non-blocking stack
+
+315
+00:14:22,839 --> 00:14:24,880
+is basically when what we are doing in
+
+316
+00:14:24,880 --> 00:14:27,040
+non-blocking is your request or your
+
+317
+00:14:27,040 --> 00:14:29,120
+thread itself is not blocked what means
+
+318
+00:14:29,120 --> 00:14:31,519
+is whenever the fetch order request is
+
+319
+00:14:31,519 --> 00:14:34,399
+made the request will be unblocked
+
+320
+00:14:34,399 --> 00:14:36,639
+immediately and the the call will be
+
+321
+00:14:36,639 --> 00:14:40,120
+given to the channels uh channels to
+
+322
+00:14:40,120 --> 00:14:42,240
+process or take it forward so basically
+
+323
+00:14:42,240 --> 00:14:44,360
+there is some one thread or some thread
+
+324
+00:14:44,360 --> 00:14:46,759
+basically which are making that call but
+
+325
+00:14:46,759 --> 00:14:50,040
+your framework threads are uh not
+
+326
+00:14:50,040 --> 00:14:52,120
+blocked what it means is that it's
+
+327
+00:14:52,120 --> 00:14:54,279
+mostly now it event based U
+
+328
+00:14:54,279 --> 00:14:56,920
+communication so whenever you get a
+
+329
+00:14:56,920 --> 00:14:59,120
+request your thread makes that call call
+
+330
+00:14:59,120 --> 00:15:02,000
+and then uh immediately it gets freed
+
+331
+00:15:02,000 --> 00:15:04,399
+similarly when we are making this call
+
+332
+00:15:04,399 --> 00:15:06,199
+that thread will again thread will make
+
+333
+00:15:06,199 --> 00:15:08,199
+a call and immediately it will be freed
+
+334
+00:15:08,199 --> 00:15:09,920
+and then we'll wait we'll do some other
+
+335
+00:15:09,920 --> 00:15:12,800
+operation so that is a synchronous
+
+336
+00:15:12,800 --> 00:15:15,079
+nonblocking way of handling things so
+
+337
+00:15:15,079 --> 00:15:17,360
+here if you are having millions or
+
+338
+00:15:17,360 --> 00:15:18,959
+hundred or thousands of threads
+
+339
+00:15:18,959 --> 00:15:21,320
+basically you your thread pull will able
+
+340
+00:15:21,320 --> 00:15:23,680
+to handle those requests what it will do
+
+341
+00:15:23,680 --> 00:15:26,079
+is it will basically pick one request if
+
+342
+00:15:26,079 --> 00:15:28,079
+there is any asynchron or any blocking
+
+343
+00:15:28,079 --> 00:15:30,440
+call it will immediate it will call that
+
+344
+00:15:30,440 --> 00:15:32,519
+particular thing and immediately uh free
+
+345
+00:15:32,519 --> 00:15:35,000
+up and then we'll be able to process the
+
+346
+00:15:35,000 --> 00:15:37,800
+other request so that is asynchronous
+
+347
+00:15:37,800 --> 00:15:40,160
+non-blocking
+
+348
+00:15:40,160 --> 00:15:44,079
+but okay uh this comes with its own
+
+349
+00:15:44,079 --> 00:15:46,160
+challenges people had to develop this
+
+350
+00:15:46,160 --> 00:15:48,880
+non-blocking not because it's easy but
+
+351
+00:15:48,880 --> 00:15:50,720
+as we Face there is a issue with or
+
+352
+00:15:50,720 --> 00:15:52,000
+there are challenges with the
+
+353
+00:15:52,000 --> 00:15:53,720
+synchronous we have doing things when
+
+354
+00:15:53,720 --> 00:15:55,040
+you are blocking you are not able to
+
+355
+00:15:55,040 --> 00:15:58,560
+scale up properly and that's why uh
+
+356
+00:15:58,560 --> 00:16:00,319
+people had to develop this non-blocking
+
+357
+00:16:00,319 --> 00:16:03,560
+stack around uh with
+
+358
+00:16:03,560 --> 00:16:07,120
+uh yeah so um when you look at the code
+
+359
+00:16:07,120 --> 00:16:09,639
+right so what are the challenges so
+
+360
+00:16:09,639 --> 00:16:11,560
+challenges are one is it's no longer
+
+361
+00:16:11,560 --> 00:16:14,079
+simpler so when you read a code it is
+
+362
+00:16:14,079 --> 00:16:15,480
+not when you look at the non-blocking
+
+363
+00:16:15,480 --> 00:16:17,560
+code basically it's you might have seen
+
+364
+00:16:17,560 --> 00:16:19,360
+the completable future code where you
+
+365
+00:16:19,360 --> 00:16:21,800
+are doing or composing things uh so it
+
+366
+00:16:21,800 --> 00:16:23,920
+it is not that simple to understand to
+
+367
+00:16:23,920 --> 00:16:26,240
+or read or to reason about for example
+
+368
+00:16:26,240 --> 00:16:27,920
+if these three things are going or
+
+369
+00:16:27,920 --> 00:16:29,199
+happening in
+
+370
+00:16:29,199 --> 00:16:30,560
+what if something goes wrong in customer
+
+371
+00:16:30,560 --> 00:16:34,360
+preference will it um terminate the
+
+372
+00:16:34,360 --> 00:16:37,880
+execution here or the fet customer call
+
+373
+00:16:37,880 --> 00:16:39,399
+Will Go
+
+374
+00:16:39,399 --> 00:16:43,079
+On um also it will be hard to understand
+
+375
+00:16:43,079 --> 00:16:46,519
+the what is the uh stack Trace when you
+
+376
+00:16:46,519 --> 00:16:48,720
+like take a thread down you will not get
+
+377
+00:16:48,720 --> 00:16:51,959
+the usable context around the uh stack
+
+378
+00:16:51,959 --> 00:16:54,399
+traces debugging and profiling become
+
+379
+00:16:54,399 --> 00:16:56,959
+hards uh so when you try to debug or
+
+380
+00:16:56,959 --> 00:16:59,600
+even you test it it becomes harder than
+
+381
+00:16:59,600 --> 00:17:02,759
+the synchronous code that we
+
+382
+00:17:02,759 --> 00:17:05,599
+saw uh so essentially the application
+
+383
+00:17:05,599 --> 00:17:07,079
+unit of concurrency is no longer
+
+384
+00:17:07,079 --> 00:17:08,679
+platform unit platform's unit of
+
+385
+00:17:08,679 --> 00:17:12,039
+concurrency so the reasoning of cod
+
+386
+00:17:12,039 --> 00:17:14,280
+becomes harder when you move to the
+
+387
+00:17:14,280 --> 00:17:16,240
+nonblocking
+
+388
+00:17:16,240 --> 00:17:18,520
+stack so
+
+389
+00:17:18,520 --> 00:17:22,880
+to U solve the problem of a synchronous
+
+390
+00:17:22,880 --> 00:17:25,000
+or basically to solve the problem of
+
+391
+00:17:25,000 --> 00:17:27,799
+synchronous um way of doing things for
+
+392
+00:17:27,799 --> 00:17:31,760
+example issue and to help to make your
+
+393
+00:17:31,760 --> 00:17:36,280
+code uh look s same as the synchronous
+
+394
+00:17:36,280 --> 00:17:39,480
+code the virtual thread has uh done a
+
+395
+00:17:39,480 --> 00:17:42,400
+good job there so here what uh has
+
+396
+00:17:42,400 --> 00:17:44,760
+happened is so virtual thread is
+
+397
+00:17:44,760 --> 00:17:47,960
+basically nothing but your user defined
+
+398
+00:17:47,960 --> 00:17:50,960
+threads so for example you can see here
+
+399
+00:17:50,960 --> 00:17:52,600
+so these threads will be created within
+
+400
+00:17:52,600 --> 00:17:56,559
+the jvm and these threads are mapped on
+
+401
+00:17:56,559 --> 00:17:59,799
+to your platform threads so it's now
+
+402
+00:17:59,799 --> 00:18:02,799
+responsibility or it basically jvm is in
+
+403
+00:18:02,799 --> 00:18:05,640
+control of creation and scheduling of
+
+404
+00:18:05,640 --> 00:18:08,200
+these threads onto a platform
+
+405
+00:18:08,200 --> 00:18:10,400
+threads U
+
+406
+00:18:10,400 --> 00:18:13,039
+so here it is not one to one mapping but
+
+407
+00:18:13,039 --> 00:18:15,720
+rather one thread can be mapped onto any
+
+408
+00:18:15,720 --> 00:18:17,320
+of this platform thread which is also
+
+409
+00:18:17,320 --> 00:18:19,919
+called as a carrier thread and then
+
+410
+00:18:19,919 --> 00:18:22,880
+those particular threads are being again
+
+411
+00:18:22,880 --> 00:18:25,440
+executed for example these are nothing
+
+412
+00:18:25,440 --> 00:18:27,000
+but the kernel
+
+413
+00:18:27,000 --> 00:18:29,520
+thread so
+
+414
+00:18:29,520 --> 00:18:32,280
+one benefit here is it's cheap to create
+
+415
+00:18:32,280 --> 00:18:35,520
+what it means is only few bytes 100
+
+416
+00:18:35,520 --> 00:18:38,919
+bytes basically um are U required in
+
+417
+00:18:38,919 --> 00:18:40,520
+order to create this particular virtual
+
+418
+00:18:40,520 --> 00:18:44,120
+thread so you can infinite you can
+
+419
+00:18:44,120 --> 00:18:46,400
+thetically create infinite number of um
+
+420
+00:18:46,400 --> 00:18:48,679
+virtual threads because it's not taking
+
+421
+00:18:48,679 --> 00:18:50,880
+that much amount of
+
+422
+00:18:50,880 --> 00:18:54,039
+memory also it's very fast to create uh
+
+423
+00:18:54,039 --> 00:18:55,320
+jvm handles the life cycle and
+
+424
+00:18:55,320 --> 00:18:57,000
+scheduling because jvm handles the life
+
+425
+00:18:57,000 --> 00:19:00,480
+cycle and scheduling uh JV jvm has more
+
+426
+00:19:00,480 --> 00:19:03,840
+control over scheduling part jvm can
+
+427
+00:19:03,840 --> 00:19:06,880
+schedule it or unschedule it or park it
+
+428
+00:19:06,880 --> 00:19:09,840
+or unpark it based on the uh blocking
+
+429
+00:19:09,840 --> 00:19:11,320
+call that is
+
+430
+00:19:11,320 --> 00:19:13,760
+happening user thre request sty more
+
+431
+00:19:13,760 --> 00:19:15,960
+efficiently so now you can use the
+
+432
+00:19:15,960 --> 00:19:17,600
+thread per request style code which we
+
+433
+00:19:17,600 --> 00:19:20,919
+saw which is simple enough to understand
+
+434
+00:19:20,919 --> 00:19:24,559
+uh right and and test with that with the
+
+435
+00:19:24,559 --> 00:19:26,720
+same performance as the asynchronous way
+
+436
+00:19:26,720 --> 00:19:29,159
+of doing things okay can achieve same
+
+437
+00:19:29,159 --> 00:19:32,240
+scale as a asynchronous code does not
+
+438
+00:19:32,240 --> 00:19:34,559
+require learning New Concept this is
+
+439
+00:19:34,559 --> 00:19:36,080
+again one benefit is if you are moving
+
+440
+00:19:36,080 --> 00:19:39,120
+to Virtual thread you don't require to
+
+441
+00:19:39,120 --> 00:19:40,960
+learn New Concept like you have to learn
+
+442
+00:19:40,960 --> 00:19:43,159
+it for reactive stack or the
+
+443
+00:19:43,159 --> 00:19:44,720
+asynchronous
+
+444
+00:19:44,720 --> 00:19:47,360
+stack okay so let's understand how we
+
+445
+00:19:47,360 --> 00:19:50,320
+can create this uh virtual thread so
+
+446
+00:19:50,320 --> 00:19:51,840
+there is Executor service which is
+
+447
+00:19:51,840 --> 00:19:54,280
+introduced as part of
+
+448
+00:19:54,280 --> 00:19:57,240
+uh executors itself so new virtual
+
+449
+00:19:57,240 --> 00:19:59,919
+thread part task executor what it does
+
+450
+00:19:59,919 --> 00:20:02,000
+is basically it creates new virtual
+
+451
+00:20:02,000 --> 00:20:04,320
+thread every time uh you submit some
+
+452
+00:20:04,320 --> 00:20:07,520
+task to that executor so here we are
+
+453
+00:20:07,520 --> 00:20:11,200
+saying that okay for 0 to th000 for each
+
+454
+00:20:11,200 --> 00:20:12,720
+iteration we are creating new thread and
+
+455
+00:20:12,720 --> 00:20:15,200
+just giving this duration of sleep of 1
+
+456
+00:20:15,200 --> 00:20:17,360
+second uh you can run this as well it
+
+457
+00:20:17,360 --> 00:20:19,919
+works really
+
+458
+00:20:21,120 --> 00:20:25,840
+well uh we can now check the
+
+459
+00:20:27,159 --> 00:20:30,159
+code
+
+460
+00:20:31,720 --> 00:20:33,679
+uh you guys are able to see the screen
+
+461
+00:20:33,679 --> 00:20:35,480
+right
+
+462
+00:20:35,480 --> 00:20:38,480
+yeah
+
+463
+00:20:44,520 --> 00:20:47,240
+okay so if you see uh the same code is
+
+464
+00:20:47,240 --> 00:20:49,720
+here recommend products we have again
+
+465
+00:20:49,720 --> 00:20:50,679
+fetch
+
+466
+00:20:50,679 --> 00:20:53,400
+customer fetch customer preference order
+
+467
+00:20:53,400 --> 00:20:56,679
+history so if you want to so this is
+
+468
+00:20:56,679 --> 00:20:57,799
+basically your typical springbot
+
+469
+00:20:57,799 --> 00:20:58,880
+application
+
+470
+00:20:58,880 --> 00:21:01,760
+so if you want to enable or um use
+
+471
+00:21:01,760 --> 00:21:03,360
+Virtual thread on your existing spring
+
+472
+00:21:03,360 --> 00:21:05,679
+boot application so if you're using
+
+473
+00:21:05,679 --> 00:21:10,760
+spring boot uh before 3.1 do 3.2 dox
+
+474
+00:21:10,760 --> 00:21:14,520
+then uh okay let me
+
+475
+00:21:15,279 --> 00:21:18,240
+open all you need to do is you need
+
+476
+00:21:18,240 --> 00:21:21,600
+to uh create this beans and override the
+
+477
+00:21:21,600 --> 00:21:25,200
+existing executor for the Tomcat so here
+
+478
+00:21:25,200 --> 00:21:27,240
+you can say set executor and you can say
+
+479
+00:21:27,240 --> 00:21:29,559
+executor virtual thread per task
+
+480
+00:21:29,559 --> 00:21:31,559
+executor also you are doing the same
+
+481
+00:21:31,559 --> 00:21:33,840
+thing for the assing task executor you
+
+482
+00:21:33,840 --> 00:21:37,279
+are giving the basically uh giving the
+
+483
+00:21:37,279 --> 00:21:40,279
+new executor for the virtual thread how
+
+484
+00:21:40,279 --> 00:21:42,640
+we are doing here is basically we have
+
+485
+00:21:42,640 --> 00:21:44,120
+added
+
+486
+00:21:44,120 --> 00:21:47,080
+this property called thread executor
+
+487
+00:21:47,080 --> 00:21:50,120
+virtual so if it is virtual then we are
+
+488
+00:21:50,120 --> 00:21:52,320
+um creating a bin which will be used in
+
+489
+00:21:52,320 --> 00:21:55,039
+order to replace your underlying
+
+490
+00:21:55,039 --> 00:21:57,039
+executor service with the virtual
+
+491
+00:21:57,039 --> 00:22:00,039
+threads
+
+492
+00:22:01,760 --> 00:22:03,400
+no you need only one so if you are only
+
+493
+00:22:03,400 --> 00:22:06,679
+using the synchronous code then only one
+
+494
+00:22:06,679 --> 00:22:08,360
+but in case of a
+
+495
+00:22:08,360 --> 00:22:11,440
+sync any a sync operation right you need
+
+496
+00:22:11,440 --> 00:22:14,520
+both so it is recommended to do to
+
+497
+00:22:14,520 --> 00:22:16,960
+override for both the
+
+498
+00:22:16,960 --> 00:22:19,960
+protocol
+
+499
+00:22:20,919 --> 00:22:22,600
+this
+
+500
+00:22:22,600 --> 00:22:25,360
+basically virtual threads yes so Tom now
+
+501
+00:22:25,360 --> 00:22:28,039
+will use the executor virtual thread
+
+502
+00:22:28,039 --> 00:22:30,720
+full executor
+
+503
+00:22:30,720 --> 00:22:33,480
+service okay so now you were saying that
+
+504
+00:22:33,480 --> 00:22:38,440
+okay it's gives that uh the same kind of
+
+505
+00:22:38,440 --> 00:22:40,919
+throughput or scale as as sync
+
+506
+00:22:40,919 --> 00:22:43,559
+programming does but do we have
+
+507
+00:22:43,559 --> 00:22:45,320
+any uh
+
+508
+00:22:45,320 --> 00:22:49,279
+proof so well let's look at
+
+509
+00:22:49,400 --> 00:22:51,799
+it okay just give me a second I will
+
+510
+00:22:51,799 --> 00:22:54,960
+just so what I'm doing is I am um
+
+511
+00:22:54,960 --> 00:22:56,960
+starting this
+
+512
+00:22:56,960 --> 00:23:00,000
+application again uh I have commented
+
+513
+00:23:00,000 --> 00:23:03,080
+out this property so now the underlying
+
+514
+00:23:03,080 --> 00:23:04,760
+uh thread pool would be the normal
+
+515
+00:23:04,760 --> 00:23:07,840
+platform threads that Tom
+
+516
+00:23:07,840 --> 00:23:10,919
+uses and here we have if you see we have
+
+517
+00:23:10,919 --> 00:23:14,640
+test uh here what we are doing is we so
+
+518
+00:23:14,640 --> 00:23:16,640
+we will first start with the 100 threads
+
+519
+00:23:16,640 --> 00:23:21,080
+as Tomcat has like 200 default thread in
+
+520
+00:23:21,080 --> 00:23:23,640
+the thre pool so we are going going with
+
+521
+00:23:23,640 --> 00:23:25,840
+the
+
+522
+00:23:26,880 --> 00:23:29,880
+100
+
+523
+00:23:30,320 --> 00:23:32,360
+uh are you able
+
+524
+00:23:32,360 --> 00:23:35,760
+to okay I
+
+525
+00:23:40,320 --> 00:23:44,080
+think okay I'm not able to zoom here uh
+
+526
+00:23:44,080 --> 00:23:46,440
+give me a
+
+527
+00:23:56,600 --> 00:24:00,200
+minute okay let to
+
+528
+00:24:00,679 --> 00:24:04,360
+zoom for okay I will just um explain uh
+
+529
+00:24:04,360 --> 00:24:07,400
+if you are not able to say it so we have
+
+530
+00:24:07,400 --> 00:24:09,840
+100 number 100 user so we have given
+
+531
+00:24:09,840 --> 00:24:11,400
+that okay 100 parallel user needs to
+
+532
+00:24:11,400 --> 00:24:14,120
+access this particular endpoint uh for
+
+533
+00:24:14,120 --> 00:24:16,799
+30 seconds we will learn this test so we
+
+534
+00:24:16,799 --> 00:24:19,039
+have created this endpoint uh so
+
+535
+00:24:19,039 --> 00:24:22,440
+endpoint is the same which we
+
+536
+00:24:25,240 --> 00:24:29,799
+saw here basically okay let me
+
+537
+00:24:34,159 --> 00:24:37,080
+um so product recommendation service so
+
+538
+00:24:37,080 --> 00:24:38,600
+what we have done here is nothing but we
+
+539
+00:24:38,600 --> 00:24:40,360
+have induced some kind of sleep here
+
+540
+00:24:40,360 --> 00:24:44,520
+just to um simulate our experience for
+
+541
+00:24:44,520 --> 00:24:48,039
+blocking part so if you see here 500
+
+542
+00:24:48,039 --> 00:24:50,159
+millisecond of sleep is there 400
+
+543
+00:24:50,159 --> 00:24:52,679
+millisecond and then the 1 second so in
+
+544
+00:24:52,679 --> 00:24:55,320
+total it should take more than 1.9
+
+545
+00:24:55,320 --> 00:24:57,559
+second uh and then we are basically
+
+546
+00:24:57,559 --> 00:24:58,640
+calling calling that
+
+547
+00:24:58,640 --> 00:25:01,279
+endpoint 100 times with the 100
+
+548
+00:25:01,279 --> 00:25:05,799
+concurrent request okay let's run
+
+549
+00:25:11,120 --> 00:25:14,399
+this cool so uh if you see then the
+
+550
+00:25:14,399 --> 00:25:17,200
+request would start now we can see that
+
+551
+00:25:17,200 --> 00:25:20,440
+are request being made every
+
+552
+00:25:20,440 --> 00:25:22,720
+second and if you look at the sample
+
+553
+00:25:22,720 --> 00:25:29,520
+time which is below 2 second
+
+554
+00:25:29,520 --> 00:25:33,559
+are you guys able to see properly uh
+
+555
+00:25:34,200 --> 00:25:39,039
+no now so if you see uh the request time
+
+556
+00:25:39,039 --> 00:25:42,679
+is basically U within 2 second because
+
+557
+00:25:42,679 --> 00:25:47,640
+we we are only u in quaring I mean
+
+558
+00:25:47,640 --> 00:25:51,480
+sending 100 requ 100 request per second
+
+559
+00:25:51,480 --> 00:25:52,919
+so if
+
+560
+00:25:52,919 --> 00:25:55,559
+we look at the response
+
+561
+00:25:55,559 --> 00:25:59,880
+graph it's a constant time right it
+
+562
+00:25:59,880 --> 00:26:02,240
+didn't go up above the 200 seconds now
+
+563
+00:26:02,240 --> 00:26:03,760
+let's do one
+
+564
+00:26:03,760 --> 00:26:07,440
+thing let's say we we are increasing our
+
+565
+00:26:07,440 --> 00:26:10,520
+request to
+
+566
+00:26:10,520 --> 00:26:12,679
+th000 request per
+
+567
+00:26:12,679 --> 00:26:16,720
+seconds and let's see what would be
+
+568
+00:26:16,720 --> 00:26:20,559
+the let me okay
+
+569
+00:26:24,039 --> 00:26:28,120
+nice so you you can see the has
+
+570
+00:26:28,120 --> 00:26:30,240
+increased but if you look at the time
+
+571
+00:26:30,240 --> 00:26:31,960
+that it takes to process those request
+
+572
+00:26:31,960 --> 00:26:36,679
+right has increased as well Laten
+
+573
+00:26:36,720 --> 00:26:40,600
+see so it means your application is not
+
+574
+00:26:40,600 --> 00:26:44,480
+able to handle that load
+
+575
+00:26:44,480 --> 00:26:47,039
+yes because your request is basically
+
+576
+00:26:47,039 --> 00:26:49,440
+waiting your threats are waiting on
+
+577
+00:26:49,440 --> 00:26:52,279
+those blocking part so the new request
+
+578
+00:26:52,279 --> 00:26:54,320
+which are coming are skewed and that's
+
+579
+00:26:54,320 --> 00:26:57,320
+why taking a long time to process or
+
+580
+00:26:57,320 --> 00:26:58,799
+your
+
+581
+00:26:58,799 --> 00:27:01,159
+request so after 30 second if you look
+
+582
+00:27:01,159 --> 00:27:03,000
+at the
+
+583
+00:27:03,000 --> 00:27:05,279
+graph you can see the request are going
+
+584
+00:27:05,279 --> 00:27:08,919
+on and the time is
+
+585
+00:27:09,320 --> 00:27:11,360
+increasing if you look at the response
+
+586
+00:27:11,360 --> 00:27:14,039
+graph it's basically going
+
+587
+00:27:14,039 --> 00:27:17,679
+up right so this is the problem with the
+
+588
+00:27:17,679 --> 00:27:20,600
+um the threads the platform threads now
+
+589
+00:27:20,600 --> 00:27:25,480
+let's test it out with our U virtual
+
+590
+00:27:25,480 --> 00:27:28,720
+threads so I'll go here
+
+591
+00:27:28,720 --> 00:27:30,399
+uncommanded out and then run the
+
+592
+00:27:30,399 --> 00:27:32,840
+application
+
+593
+00:27:36,120 --> 00:27:39,000
+again here we'll clear the graph so you
+
+594
+00:27:39,000 --> 00:27:40,600
+you have seen graph right so basically
+
+595
+00:27:40,600 --> 00:27:43,559
+here it's it started with 6 second the
+
+596
+00:27:43,559 --> 00:27:45,399
+reason here is basically because of the
+
+597
+00:27:45,399 --> 00:27:49,279
+contention so for as it supports only
+
+598
+00:27:49,279 --> 00:27:51,799
+200 request per request at a time we are
+
+599
+00:27:51,799 --> 00:27:54,600
+giving thousand requests and because of
+
+600
+00:27:54,600 --> 00:27:57,240
+those requests there's a contention and
+
+601
+00:27:57,240 --> 00:27:59,679
+that's why why it takes a longer time to
+
+602
+00:27:59,679 --> 00:28:04,080
+process or to um uh complete your
+
+603
+00:28:04,080 --> 00:28:08,000
+request so we can clear
+
+604
+00:28:09,399 --> 00:28:13,159
+this application is up and with the same
+
+605
+00:28:13,159 --> 00:28:16,159
+load here we are G keeping the same load
+
+606
+00:28:16,159 --> 00:28:19,679
+1,000 request per second and we we are
+
+607
+00:28:19,679 --> 00:28:21,720
+running for the 30
+
+608
+00:28:21,720 --> 00:28:25,679
+second and if you look at the
+
+609
+00:28:25,720 --> 00:28:28,559
+response it is constant
+
+610
+00:28:28,559 --> 00:28:31,159
+within that 2
+
+611
+00:28:31,159 --> 00:28:34,200
+second same load we saw earlier that it
+
+612
+00:28:34,200 --> 00:28:36,720
+was taking a lot of time but now as we
+
+613
+00:28:36,720 --> 00:28:40,960
+move to Virtual threads it is within the
+
+614
+00:28:40,960 --> 00:28:42,600
+time limit that we are we were thinking
+
+615
+00:28:42,600 --> 00:28:44,519
+that okay it should take around 1.9
+
+616
+00:28:44,519 --> 00:28:47,399
+second not more than that
+
+617
+00:28:47,399 --> 00:28:49,880
+uh
+
+618
+00:28:49,880 --> 00:28:52,480
+right so after 30 second if we look at
+
+619
+00:28:52,480 --> 00:28:54,679
+the
+
+620
+00:28:54,720 --> 00:28:58,240
+graph it is constant
+
+621
+00:28:58,240 --> 00:29:01,519
+Chang same code yes we just change the
+
+622
+00:29:01,519 --> 00:29:03,799
+underlying executor service we are
+
+623
+00:29:03,799 --> 00:29:05,600
+saying that rather than using PL form
+
+624
+00:29:05,600 --> 00:29:07,960
+threads we need to we want to use now
+
+625
+00:29:07,960 --> 00:29:11,000
+virtual threads
+
+626
+00:29:12,519 --> 00:29:15,760
+yes awesome uh any question here or we
+
+627
+00:29:15,760 --> 00:29:17,080
+can go
+
+628
+00:29:17,080 --> 00:29:19,919
+next uh in this case why why is there a
+
+629
+00:29:19,919 --> 00:29:23,600
+downward print so it started the
+
+630
+00:29:23,600 --> 00:29:26,320
+Thousand request uh but then it was able
+
+631
+00:29:26,320 --> 00:29:28,480
+to catch up the load and then has it
+
+632
+00:29:28,480 --> 00:29:30,039
+going
+
+633
+00:29:30,039 --> 00:29:32,320
+down so when you when you start right
+
+634
+00:29:32,320 --> 00:29:35,200
+you create the threads right basically
+
+635
+00:29:35,200 --> 00:29:37,120
+you need to create virtual thread so
+
+636
+00:29:37,120 --> 00:29:39,000
+thread creation is also takes some some
+
+637
+00:29:39,000 --> 00:29:41,039
+time and that's why it's more than 1.9
+
+638
+00:29:41,039 --> 00:29:43,559
+seconds uh as you have many threads it's
+
+639
+00:29:43,559 --> 00:29:46,000
+already started to process it once it is
+
+640
+00:29:46,000 --> 00:29:49,500
+created being in use then it goes down
+
+641
+00:29:49,500 --> 00:29:51,640
+[Music]
+
+642
+00:29:51,640 --> 00:29:55,360
+okay cool
+
+643
+00:29:56,320 --> 00:29:59,320
+uh
+
+644
+00:29:59,799 --> 00:30:02,519
+so so we saw the uh performance as well
+
+645
+00:30:02,519 --> 00:30:04,320
+now let's understand how it is
+
+646
+00:30:04,320 --> 00:30:06,039
+implemented or how it works
+
+647
+00:30:06,039 --> 00:30:08,240
+internally right so basically virtual
+
+648
+00:30:08,240 --> 00:30:09,919
+thread are again implementation of java
+
+649
+00:30:09,919 --> 00:30:13,880
+length. thread uh so everything or all
+
+650
+00:30:13,880 --> 00:30:15,840
+the observability or if you say
+
+651
+00:30:15,840 --> 00:30:19,240
+monitoring tools which are there uh will
+
+652
+00:30:19,240 --> 00:30:21,159
+also be useful or work for the virtual
+
+653
+00:30:21,159 --> 00:30:23,120
+threads you can take the thread dump and
+
+654
+00:30:23,120 --> 00:30:26,279
+you can also monitor it um all the
+
+655
+00:30:26,279 --> 00:30:28,399
+support is also provided for the virtual
+
+656
+00:30:28,399 --> 00:30:31,200
+threads uh there are two main construct
+
+657
+00:30:31,200 --> 00:30:33,080
+to understand here continuation
+
+658
+00:30:33,080 --> 00:30:35,600
+scheduler so continuation is basically
+
+659
+00:30:35,600 --> 00:30:39,840
+again uh lowlevel API which um Java
+
+660
+00:30:39,840 --> 00:30:41,120
+doesn't I mean the Oracle doesn't
+
+661
+00:30:41,120 --> 00:30:43,799
+recommend to use in production so but
+
+662
+00:30:43,799 --> 00:30:45,480
+they are using the continuation in order
+
+663
+00:30:45,480 --> 00:30:48,200
+to achieve this and then there's a
+
+664
+00:30:48,200 --> 00:30:50,039
+Schuler which schedules the threats or
+
+665
+00:30:50,039 --> 00:30:51,880
+the task on the platform thread so what
+
+666
+00:30:51,880 --> 00:30:52,840
+happens
+
+667
+00:30:52,840 --> 00:30:56,000
+is uh when you assign or when you give
+
+668
+00:30:56,000 --> 00:30:58,639
+any task to a virtual thread virtual
+
+669
+00:30:58,639 --> 00:31:00,600
+thread will wrap that particular task
+
+670
+00:31:00,600 --> 00:31:03,840
+within a continuation and then and then
+
+671
+00:31:03,840 --> 00:31:07,480
+it the task will be given to the
+
+672
+00:31:07,480 --> 00:31:11,200
+uh so here by default U Fork joint pool
+
+673
+00:31:11,200 --> 00:31:15,480
+is being used for the scheduling part so
+
+674
+00:31:15,480 --> 00:31:18,840
+for here as we see uh in in terms of for
+
+675
+00:31:18,840 --> 00:31:22,440
+pool it uses the um default parallelism
+
+676
+00:31:22,440 --> 00:31:24,440
+is number is equal to number of your
+
+677
+00:31:24,440 --> 00:31:27,559
+Hardware threads for example the virtual
+
+678
+00:31:27,559 --> 00:31:31,360
+thread is being um carried on the worker
+
+679
+00:31:31,360 --> 00:31:33,679
+one so now what happens is whenever
+
+680
+00:31:33,679 --> 00:31:35,600
+there is a blocking call whenever
+
+681
+00:31:35,600 --> 00:31:38,559
+there's a blocking call the continuation
+
+682
+00:31:38,559 --> 00:31:41,480
+do yield will be called so this guys
+
+683
+00:31:41,480 --> 00:31:43,960
+have changed it's not uh that simple so
+
+684
+00:31:43,960 --> 00:31:46,399
+for example this guys has added or
+
+685
+00:31:46,399 --> 00:31:49,159
+changed the existing Java code in order
+
+686
+00:31:49,159 --> 00:31:51,519
+to understand the blocking calls so
+
+687
+00:31:51,519 --> 00:31:54,159
+whenever jvm finds any blocking call it
+
+688
+00:31:54,159 --> 00:31:57,519
+calls the yield method which essentially
+
+689
+00:31:57,519 --> 00:31:59,679
+puts your virtual thread which is
+
+690
+00:31:59,679 --> 00:32:02,159
+nothing but an object on your
+
+691
+00:32:02,159 --> 00:32:06,799
+hip so virtual thread basically contains
+
+692
+00:32:06,799 --> 00:32:08,240
+all the contexts it was running on so
+
+693
+00:32:08,240 --> 00:32:11,360
+let's say you were running some U
+
+694
+00:32:11,360 --> 00:32:13,320
+instruction and at some instruction you
+
+695
+00:32:13,320 --> 00:32:15,279
+are calling the blocking cord at at that
+
+696
+00:32:15,279 --> 00:32:16,679
+time basically that particular
+
+697
+00:32:16,679 --> 00:32:18,039
+instruction is also saved with the
+
+698
+00:32:18,039 --> 00:32:21,000
+context so whenever there is a data
+
+699
+00:32:21,000 --> 00:32:22,880
+available so what then what operating
+
+700
+00:32:22,880 --> 00:32:25,159
+system does is whenever there is a data
+
+701
+00:32:25,159 --> 00:32:28,480
+available it basically uh interrupts
+
+702
+00:32:28,480 --> 00:32:30,880
+gives a signal to your jvm which
+
+703
+00:32:30,880 --> 00:32:33,799
+internally interrupts or or calls the
+
+704
+00:32:33,799 --> 00:32:36,279
+continuation do run method continuation
+
+705
+00:32:36,279 --> 00:32:39,120
+run method is nothing again it runs or
+
+706
+00:32:39,120 --> 00:32:41,720
+it assigns that virtual thread to the
+
+707
+00:32:41,720 --> 00:32:44,799
+worker thread so for example if the same
+
+708
+00:32:44,799 --> 00:32:47,120
+thread was available then the same
+
+709
+00:32:47,120 --> 00:32:51,840
+thread will be able to um uh um carry
+
+710
+00:32:51,840 --> 00:32:53,880
+the virtual thread but let's say this
+
+711
+00:32:53,880 --> 00:32:57,159
+worker one is busy in some other task
+
+712
+00:32:57,159 --> 00:32:58,679
+then the virtual thread can be assigned
+
+713
+00:32:58,679 --> 00:33:00,840
+on the worker
+
+714
+00:33:00,840 --> 00:33:05,639
+to so the virtual thread can be uh
+
+715
+00:33:05,639 --> 00:33:07,279
+carried by any of the worker threads
+
+716
+00:33:07,279 --> 00:33:09,919
+because as it has the context where
+
+717
+00:33:09,919 --> 00:33:13,279
+it left earlier it can continue its own
+
+718
+00:33:13,279 --> 00:33:17,360
+work so that is how it works
+
+719
+00:33:18,320 --> 00:33:22,080
+internally uh any question so what
+
+720
+00:33:22,080 --> 00:33:25,120
+happens essentially is even though your
+
+721
+00:33:25,120 --> 00:33:28,919
+code looks synchronous but underneath
+
+722
+00:33:28,919 --> 00:33:31,120
+when Whenever there is a synchronous or
+
+723
+00:33:31,120 --> 00:33:34,360
+blocking call that jvm finds it replaces
+
+724
+00:33:34,360 --> 00:33:36,880
+that synchronous call with a sync stack
+
+725
+00:33:36,880 --> 00:33:40,320
+or nonblocking stack so then there is a
+
+726
+00:33:40,320 --> 00:33:43,799
+polar which basically PS the particular
+
+727
+00:33:43,799 --> 00:33:47,159
+non-blocking um operation and once it
+
+728
+00:33:47,159 --> 00:33:49,000
+gets the result then it's basically
+
+729
+00:33:49,000 --> 00:33:50,960
+assign that virtual thread back to the
+
+730
+00:33:50,960 --> 00:33:53,440
+uh a task basically back to the your
+
+731
+00:33:53,440 --> 00:33:54,960
+worker any of the worker thread and then
+
+732
+00:33:54,960 --> 00:33:58,559
+it can continue from there
+
+733
+00:33:58,559 --> 00:34:00,360
+so this is how it works internally we
+
+734
+00:34:00,360 --> 00:34:02,200
+now can discuss about the adoption guide
+
+735
+00:34:02,200 --> 00:34:05,120
+any question so
+
+736
+00:34:06,960 --> 00:34:10,199
+far so what will be the worker pool size
+
+737
+00:34:10,199 --> 00:34:12,399
+there in the for joint pool so by
+
+738
+00:34:12,399 --> 00:34:14,199
+default it is basically same as your
+
+739
+00:34:14,199 --> 00:34:15,719
+underneath Hardware threats for example
+
+740
+00:34:15,719 --> 00:34:17,918
+if you're using four cores it is four
+
+741
+00:34:17,918 --> 00:34:19,480
+but then you can also it can also grow
+
+742
+00:34:19,480 --> 00:34:22,800
+in size uh you can also configure
+
+743
+00:34:22,800 --> 00:34:27,879
+it okay yeah um uh so one thing I mean
+
+744
+00:34:27,879 --> 00:34:30,359
+if there are lot of uh
+
+745
+00:34:30,359 --> 00:34:33,679
+blocking uh virtual threads then they
+
+746
+00:34:33,679 --> 00:34:35,960
+would fill up the chances are that they
+
+747
+00:34:35,960 --> 00:34:39,679
+would fill up the Heap since so virtual
+
+748
+00:34:39,679 --> 00:34:41,359
+thread by okay so the size of virtual
+
+749
+00:34:41,359 --> 00:34:43,960
+threads are very small so one essential
+
+750
+00:34:43,960 --> 00:34:46,079
+thing is whenever you create a virtual
+
+751
+00:34:46,079 --> 00:34:48,960
+thread uh try to make sure that the your
+
+752
+00:34:48,960 --> 00:34:50,679
+task which you are creating is small
+
+753
+00:34:50,679 --> 00:34:52,760
+enough so it will just complete that
+
+754
+00:34:52,760 --> 00:34:55,760
+task and then die off so once that
+
+755
+00:34:55,760 --> 00:34:58,040
+virtual thread is die off your
+
+756
+00:34:58,040 --> 00:34:59,839
+garbage collector will clean
+
+757
+00:34:59,839 --> 00:35:05,040
+it okay yeah any recommended uh you know
+
+758
+00:35:05,040 --> 00:35:09,560
+time or uh something for a task to be
+
+759
+00:35:09,560 --> 00:35:12,440
+given to a virtual
+
+760
+00:35:12,440 --> 00:35:14,839
+thread no so it basically depends on
+
+761
+00:35:14,839 --> 00:35:17,160
+your use case uh ideally you should if
+
+762
+00:35:17,160 --> 00:35:20,560
+let's say if you're using um if you are
+
+763
+00:35:20,560 --> 00:35:22,280
+having any non-blocking call or sorry
+
+764
+00:35:22,280 --> 00:35:24,800
+blocking uh call then in that case you
+
+765
+00:35:24,800 --> 00:35:26,440
+need to make sure what time it takes to
+
+766
+00:35:26,440 --> 00:35:28,040
+complete the task right even though the
+
+767
+00:35:28,040 --> 00:35:30,079
+blocking Cod is fine but if you're
+
+768
+00:35:30,079 --> 00:35:31,920
+handling a lot of thing in one
+
+769
+00:35:31,920 --> 00:35:35,280
+particular task right which can grow for
+
+770
+00:35:35,280 --> 00:35:38,079
+example you're adding a lot of creating
+
+771
+00:35:38,079 --> 00:35:40,400
+a big objects within that particular
+
+772
+00:35:40,400 --> 00:35:43,359
+task itself which can grow indefinitely
+
+773
+00:35:43,359 --> 00:35:46,480
+then it's basically can create a inde
+
+774
+00:35:46,480 --> 00:35:48,359
+definite of we will also talk about it
+
+775
+00:35:48,359 --> 00:35:50,680
+like how we can avoid it but we need to
+
+776
+00:35:50,680 --> 00:35:52,440
+make sure that we are giving small task
+
+777
+00:35:52,440 --> 00:35:54,560
+so that it can die off and then clean it
+
+778
+00:35:54,560 --> 00:35:57,800
+um regularly okay uh so uh one more
+
+779
+00:35:57,800 --> 00:36:00,040
+thing what I understood from virtual
+
+780
+00:36:00,040 --> 00:36:03,839
+threads is uh it is another layer above
+
+781
+00:36:03,839 --> 00:36:07,200
+the jvm thread so right so virtual
+
+782
+00:36:07,200 --> 00:36:09,880
+threads uh would be given to the jvm
+
+783
+00:36:09,880 --> 00:36:12,119
+thre and jvm would give to the platform
+
+784
+00:36:12,119 --> 00:36:14,560
+threads so it's kind of an another layer
+
+785
+00:36:14,560 --> 00:36:17,480
+so uh I'm not able to understand that
+
+786
+00:36:17,480 --> 00:36:18,920
+how it is
+
+787
+00:36:18,920 --> 00:36:22,319
+reducing uh the overall time since it's
+
+788
+00:36:22,319 --> 00:36:24,920
+another layer and it's being I mean I
+
+789
+00:36:24,920 --> 00:36:27,079
+understand that it's the concept can be
+
+790
+00:36:27,079 --> 00:36:30,200
+that I take lot of tasks in a queue and
+
+791
+00:36:30,200 --> 00:36:35,160
+then just return back but the uh task or
+
+792
+00:36:35,160 --> 00:36:38,960
+is there uh in a queue and then I keep
+
+793
+00:36:38,960 --> 00:36:41,520
+pulling kind of a concept but I'm not
+
+794
+00:36:41,520 --> 00:36:46,200
+able to um understand that uh internally
+
+795
+00:36:46,200 --> 00:36:47,480
+maybe there would be some kind of an
+
+796
+00:36:47,480 --> 00:36:50,319
+implementation detail that even though
+
+797
+00:36:50,319 --> 00:36:53,520
+adding another layer to the jvm threads
+
+798
+00:36:53,520 --> 00:36:56,200
+it's still able to reduce the time so
+
+799
+00:36:56,200 --> 00:36:58,240
+that that is what I'm not able to
+
+800
+00:36:58,240 --> 00:37:01,280
+understand yet okay so as we saw what
+
+801
+00:37:01,280 --> 00:37:04,839
+are the ways to increase your concurrent
+
+802
+00:37:04,839 --> 00:37:08,720
+request or support the con right one is
+
+803
+00:37:08,720 --> 00:37:10,200
+either you have like infinite number of
+
+804
+00:37:10,200 --> 00:37:12,640
+threads so for each particular request
+
+805
+00:37:12,640 --> 00:37:14,640
+you assign a thread and then that thread
+
+806
+00:37:14,640 --> 00:37:16,880
+will be responsible to perform the
+
+807
+00:37:16,880 --> 00:37:20,079
+complete request right agreed yeah but
+
+808
+00:37:20,079 --> 00:37:22,520
+now your platform threads are having
+
+809
+00:37:22,520 --> 00:37:25,160
+issues uh of as we saw that basically
+
+810
+00:37:25,160 --> 00:37:27,640
+the memory footprint is high the thread
+
+811
+00:37:27,640 --> 00:37:29,720
+is time that it takes to create a thread
+
+812
+00:37:29,720 --> 00:37:32,359
+is high the the context s that happens
+
+813
+00:37:32,359 --> 00:37:35,119
+is very high and that's why it is not we
+
+814
+00:37:35,119 --> 00:37:37,280
+cannot create as many thread as we want
+
+815
+00:37:37,280 --> 00:37:40,240
+and that's why o also has some capping
+
+816
+00:37:40,240 --> 00:37:43,000
+over it right in terms of virtual thread
+
+817
+00:37:43,000 --> 00:37:45,440
+now as it is kind of an object simple
+
+818
+00:37:45,440 --> 00:37:50,640
+object uh so jvm can create 100 of those
+
+819
+00:37:50,640 --> 00:37:54,040
+small objects to uh accept that request
+
+820
+00:37:54,040 --> 00:37:56,119
+that you are sending to your application
+
+821
+00:37:56,119 --> 00:37:58,119
+so now rather than your threads or the
+
+822
+00:37:58,119 --> 00:38:00,319
+platform threads which are going to
+
+823
+00:38:00,319 --> 00:38:02,040
+accept the request directly the first it
+
+824
+00:38:02,040 --> 00:38:04,839
+will go to Virtual thread yeah thre will
+
+825
+00:38:04,839 --> 00:38:07,880
+handle it if it and if it sees that okay
+
+826
+00:38:07,880 --> 00:38:10,720
+the the request is basically spending a
+
+827
+00:38:10,720 --> 00:38:13,400
+lot of time in the blocking calls right
+
+828
+00:38:13,400 --> 00:38:15,599
+at that time it will say okay I am
+
+829
+00:38:15,599 --> 00:38:20,359
+blocked uh it will ask VIR the JM that
+
+830
+00:38:20,359 --> 00:38:22,680
+okay I'm I'm blocked and now you can
+
+831
+00:38:22,680 --> 00:38:24,800
+assign any other or assign the
+
+832
+00:38:24,800 --> 00:38:27,520
+underlying worker thread to M perform
+
+833
+00:38:27,520 --> 00:38:29,560
+some other task so in that case what we
+
+834
+00:38:29,560 --> 00:38:30,839
+are doing is we are yielding so the
+
+835
+00:38:30,839 --> 00:38:33,280
+virtual thread is basically yielding and
+
+836
+00:38:33,280 --> 00:38:37,119
+then it basically parked on the Heap H
+
+837
+00:38:37,119 --> 00:38:40,400
+okay the time it gets the data once the
+
+838
+00:38:40,400 --> 00:38:42,040
+we once the operating system sees that
+
+839
+00:38:42,040 --> 00:38:44,760
+there's a data uh which was requested by
+
+840
+00:38:44,760 --> 00:38:47,280
+this particular task uh it will again
+
+841
+00:38:47,280 --> 00:38:50,280
+put onto the uh worker thread so in that
+
+842
+00:38:50,280 --> 00:38:52,079
+way your underlying worker threads are
+
+843
+00:38:52,079 --> 00:38:55,319
+not blocked so example say if you have a
+
+844
+00:38:55,319 --> 00:38:58,400
+thread pool of 200 so those 200 threads
+
+845
+00:38:58,400 --> 00:39:01,839
+are not blocked they are able to perform
+
+846
+00:39:01,839 --> 00:39:05,119
+or they are able to uh take new task and
+
+847
+00:39:05,119 --> 00:39:08,359
+and and work on it yeah so uh but the
+
+848
+00:39:08,359 --> 00:39:11,560
+limitation of the platform I mean jvm
+
+849
+00:39:11,560 --> 00:39:13,520
+threads routing to platform threads that
+
+850
+00:39:13,520 --> 00:39:16,680
+is still there so if the platform thread
+
+851
+00:39:16,680 --> 00:39:19,720
+is blocked and uh virtual threads they
+
+852
+00:39:19,720 --> 00:39:24,040
+need to uh you know um uh give to the
+
+853
+00:39:24,040 --> 00:39:26,480
+jvm thread so and then if the platform
+
+854
+00:39:26,480 --> 00:39:28,680
+threads is anyways blocked uh the
+
+855
+00:39:28,680 --> 00:39:31,280
+virtual thread will still be stuck right
+
+856
+00:39:31,280 --> 00:39:33,119
+right right so that discuss again in the
+
+857
+00:39:33,119 --> 00:39:34,880
+adoption guide so when we disc the
+
+858
+00:39:34,880 --> 00:39:36,280
+adoption guide we will also discuss like
+
+859
+00:39:36,280 --> 00:39:37,960
+how we should adopt to it when we should
+
+860
+00:39:37,960 --> 00:39:40,400
+use it uh in what cases it will give the
+
+861
+00:39:40,400 --> 00:39:44,800
+benefit when we use the virtual threads
+
+862
+00:39:44,800 --> 00:39:47,359
+okay hey sorry to interrupt is the
+
+863
+00:39:47,359 --> 00:39:49,319
+session going to be recorded like uh I
+
+864
+00:39:49,319 --> 00:39:51,520
+need to leave the session so yeah it
+
+865
+00:39:51,520 --> 00:39:54,480
+will be streamed uh and also will be uh
+
+866
+00:39:54,480 --> 00:39:56,920
+we'll put it on YouTube
+
+867
+00:39:56,920 --> 00:40:00,480
+okay thank you
+
+868
+00:40:01,800 --> 00:40:03,839
+thanks okay so let's discuss about the
+
+869
+00:40:03,839 --> 00:40:06,359
+adoption guide so uh basically it is
+
+870
+00:40:06,359 --> 00:40:10,040
+recommended to use your normal uh
+
+871
+00:40:10,040 --> 00:40:13,440
+blocking way of doing or handling the um
+
+872
+00:40:13,440 --> 00:40:15,960
+things for example here uh it is
+
+873
+00:40:15,960 --> 00:40:17,599
+recommended to use thread per request St
+
+874
+00:40:17,599 --> 00:40:19,960
+what it means your one thread will be
+
+875
+00:40:19,960 --> 00:40:22,680
+using uh the or one thir will be
+
+876
+00:40:22,680 --> 00:40:24,359
+assigned to perform the your operation
+
+877
+00:40:24,359 --> 00:40:25,800
+for example here rather than going or
+
+878
+00:40:25,800 --> 00:40:27,400
+using the liable feature because here
+
+879
+00:40:27,400 --> 00:40:29,880
+then you are creating some different uh
+
+880
+00:40:29,880 --> 00:40:34,000
+threads and handling or um doing this
+
+881
+00:40:34,000 --> 00:40:36,520
+operation within it uh so benefit you
+
+882
+00:40:36,520 --> 00:40:39,079
+will not get that benefit for here
+
+883
+00:40:39,079 --> 00:40:41,400
+because it's already in in a synchronous
+
+884
+00:40:41,400 --> 00:40:43,920
+way so you will get benefit or see the
+
+885
+00:40:43,920 --> 00:40:47,119
+benefit of when you write your code in
+
+886
+00:40:47,119 --> 00:40:48,920
+um thread per request
+
+887
+00:40:48,920 --> 00:40:51,480
+style then never pull a virtual thread
+
+888
+00:40:51,480 --> 00:40:53,520
+so one recommendation is you should not
+
+889
+00:40:53,520 --> 00:40:56,079
+pull a virtual thread so as platform
+
+890
+00:40:56,079 --> 00:40:58,440
+thread are SC resource so it makes sense
+
+891
+00:40:58,440 --> 00:41:00,040
+to pull those particular threads and
+
+892
+00:41:00,040 --> 00:41:03,079
+that's why we pull platform threads but
+
+893
+00:41:03,079 --> 00:41:04,599
+as virtual threads
+
+894
+00:41:04,599 --> 00:41:07,400
+are very cheap to create and infinitely
+
+895
+00:41:07,400 --> 00:41:10,800
+plentiful uh you should not pull it or
+
+896
+00:41:10,800 --> 00:41:12,920
+you should not have a um pull of virtual
+
+897
+00:41:12,920 --> 00:41:14,560
+thread so the other reason is if you
+
+898
+00:41:14,560 --> 00:41:16,920
+start pulling it and if you are creating
+
+899
+00:41:16,920 --> 00:41:18,839
+a millions of virtual thread then your
+
+900
+00:41:18,839 --> 00:41:20,079
+HEAP will keep on
+
+901
+00:41:20,079 --> 00:41:23,280
+growing uh because then you are not um
+
+902
+00:41:23,280 --> 00:41:25,119
+removing those threats or those threats
+
+903
+00:41:25,119 --> 00:41:27,000
+are basically being used and and and
+
+904
+00:41:27,000 --> 00:41:29,040
+that's why it will never die
+
+905
+00:41:29,040 --> 00:41:31,960
+off though so when you say new virtual
+
+906
+00:41:31,960 --> 00:41:34,000
+thread per request task executor even
+
+907
+00:41:34,000 --> 00:41:36,680
+though it's a so in normal task executor
+
+908
+00:41:36,680 --> 00:41:38,000
+or normal executor service that you
+
+909
+00:41:38,000 --> 00:41:41,200
+might have seen there mostly your
+
+910
+00:41:41,200 --> 00:41:44,400
+creates the pool executor with the size
+
+911
+00:41:44,400 --> 00:41:46,079
+of some threads so basically it pulls
+
+912
+00:41:46,079 --> 00:41:48,480
+the thread but here it will every time
+
+913
+00:41:48,480 --> 00:41:51,480
+when we submit a task to this executor
+
+914
+00:41:51,480 --> 00:41:53,200
+it will create a new virtual thread and
+
+915
+00:41:53,200 --> 00:41:54,400
+assign that particular task to that
+
+916
+00:41:54,400 --> 00:41:55,240
+virtual
+
+917
+00:41:55,240 --> 00:41:58,720
+thread uh but what if you want to limit
+
+918
+00:41:58,720 --> 00:42:00,480
+the concurrency for example if you have
+
+919
+00:42:00,480 --> 00:42:02,599
+some use case where you want to do a
+
+920
+00:42:02,599 --> 00:42:04,920
+rate limiting or remit the concurrency
+
+921
+00:42:04,920 --> 00:42:06,960
+so in that case you can use some OS
+
+922
+00:42:06,960 --> 00:42:09,160
+level construct like SE 4 so sea 4
+
+923
+00:42:09,160 --> 00:42:11,720
+basically we saying that okay 10 only 10
+
+924
+00:42:11,720 --> 00:42:14,680
+uh concurrent request we want to allow
+
+925
+00:42:14,680 --> 00:42:18,480
+for this particular uh call call limited
+
+926
+00:42:18,480 --> 00:42:21,359
+service so here you can first acquire
+
+927
+00:42:21,359 --> 00:42:22,960
+then you call the service which she
+
+928
+00:42:22,960 --> 00:42:25,400
+which you need to do a limiting and then
+
+929
+00:42:25,400 --> 00:42:26,920
+you release the same for so at a time
+
+930
+00:42:26,920 --> 00:42:28,760
+only 10 concurrent requests will be
+
+931
+00:42:28,760 --> 00:42:30,280
+allowed to process or call this
+
+932
+00:42:30,280 --> 00:42:33,000
+particular endpoint or service or
+
+933
+00:42:33,000 --> 00:42:37,000
+API so that is one way to uh handle it
+
+934
+00:42:37,000 --> 00:42:38,839
+and now here it is mentioned that don't
+
+935
+00:42:38,839 --> 00:42:42,680
+cash expensive reusable objects uh so if
+
+936
+00:42:42,680 --> 00:42:46,359
+you so thread local basically works for
+
+937
+00:42:46,359 --> 00:42:48,839
+virtual thread as well so but it is
+
+938
+00:42:48,839 --> 00:42:51,760
+recommended not to cash those expensive
+
+939
+00:42:51,760 --> 00:42:54,440
+object the reason is here you can create
+
+940
+00:42:54,440 --> 00:42:56,440
+infinite number of threads right and
+
+941
+00:42:56,440 --> 00:42:58,480
+every time you create a new thread the
+
+942
+00:42:58,480 --> 00:43:00,280
+thread will also create a thread local
+
+943
+00:43:00,280 --> 00:43:01,440
+for example if you're using the
+
+944
+00:43:01,440 --> 00:43:03,240
+expensive objects within it if you are
+
+945
+00:43:03,240 --> 00:43:06,240
+caching it then it will also be there in
+
+946
+00:43:06,240 --> 00:43:08,640
+the Heap so your basically memory will
+
+947
+00:43:08,640 --> 00:43:10,920
+die off you will get the out of memory
+
+948
+00:43:10,920 --> 00:43:13,800
+issues or you need to have like a big
+
+949
+00:43:13,800 --> 00:43:16,119
+memory there so it is recommended not to
+
+950
+00:43:16,119 --> 00:43:19,720
+use the expensive not to cash expensive
+
+951
+00:43:19,720 --> 00:43:22,760
+U objects so here in this case there
+
+952
+00:43:22,760 --> 00:43:25,040
+there is a New Concept called scope
+
+953
+00:43:25,040 --> 00:43:27,359
+variable that is going to be released so
+
+954
+00:43:27,359 --> 00:43:29,359
+that is the scope variable is there as
+
+955
+00:43:29,359 --> 00:43:32,559
+part of preview uh you can take a look
+
+956
+00:43:32,559 --> 00:43:36,359
+at it um how it handles this uh or how
+
+957
+00:43:36,359 --> 00:43:39,359
+it basically provides the uh value or
+
+958
+00:43:39,359 --> 00:43:42,119
+provides the uh cachable objects to your
+
+959
+00:43:42,119 --> 00:43:43,440
+virtual
+
+960
+00:43:43,440 --> 00:43:45,520
+threads and then avoid lengthy and
+
+961
+00:43:45,520 --> 00:43:50,200
+frequent pinning so KV of using uh
+
+962
+00:43:50,200 --> 00:43:52,200
+virtual threads there are two kards one
+
+963
+00:43:52,200 --> 00:43:53,960
+is if you're let's say within a virtual
+
+964
+00:43:53,960 --> 00:43:56,400
+thread if you're making a native call
+
+965
+00:43:56,400 --> 00:43:58,880
+then virtual thread will be pinned onto
+
+966
+00:43:58,880 --> 00:44:02,119
+your underlying uh platform thread
+
+967
+00:44:02,119 --> 00:44:04,920
+because now jvm has no context what is
+
+968
+00:44:04,920 --> 00:44:07,000
+happening in your foreign function or in
+
+969
+00:44:07,000 --> 00:44:08,960
+your native function even if there is a
+
+970
+00:44:08,960 --> 00:44:11,920
+blocking call or non-blocking call J jvm
+
+971
+00:44:11,920 --> 00:44:14,280
+will have not any um understanding of
+
+972
+00:44:14,280 --> 00:44:17,880
+that so that's why it is not able to uh
+
+973
+00:44:17,880 --> 00:44:20,599
+unblock uh it is not able to park your
+
+974
+00:44:20,599 --> 00:44:22,440
+virtual thread Whenever there is a
+
+975
+00:44:22,440 --> 00:44:25,119
+native or the foreign call Point
+
+976
+00:44:25,119 --> 00:44:26,839
+function call
+
+977
+00:44:26,839 --> 00:44:29,880
+second uh kvart is the synchronized
+
+978
+00:44:29,880 --> 00:44:32,200
+block so whenever you are using a
+
+979
+00:44:32,200 --> 00:44:35,160
+synchronized block your virtual thread
+
+980
+00:44:35,160 --> 00:44:37,880
+is basically pinned onto your platform
+
+981
+00:44:37,880 --> 00:44:40,599
+thread uh so if your synchronized block
+
+982
+00:44:40,599 --> 00:44:43,800
+is just guarding some kind of a inmemory
+
+983
+00:44:43,800 --> 00:44:46,680
+object uh then it is fine even if your
+
+984
+00:44:46,680 --> 00:44:49,880
+synchronized block is not making kind of
+
+985
+00:44:49,880 --> 00:44:53,040
+a frequent blocking call or long
+
+986
+00:44:53,040 --> 00:44:55,160
+blocking calls which is still fine but
+
+987
+00:44:55,160 --> 00:44:56,880
+if it is like Len and the frequent
+
+988
+00:44:56,880 --> 00:44:58,480
+blocking call and if you are using
+
+989
+00:44:58,480 --> 00:45:00,319
+virtual threads then it will be pinned
+
+990
+00:45:00,319 --> 00:45:02,599
+onto your platform threads and there you
+
+991
+00:45:02,599 --> 00:45:05,200
+can see some scaling issue so what's the
+
+992
+00:45:05,200 --> 00:45:08,040
+solution here uh so in this case we can
+
+993
+00:45:08,040 --> 00:45:10,359
+use the re-entrant lock you can just say
+
+994
+00:45:10,359 --> 00:45:13,000
+lock create a object of reentrant lock
+
+995
+00:45:13,000 --> 00:45:15,359
+acquire it perform whatever the
+
+996
+00:45:15,359 --> 00:45:16,559
+operation you want to perform and you
+
+997
+00:45:16,559 --> 00:45:19,720
+can unlock it so this is the current
+
+998
+00:45:19,720 --> 00:45:22,400
+kave however they are working on it uh
+
+999
+00:45:22,400 --> 00:45:24,280
+to maybe not sure maybe in future
+
+1000
+00:45:24,280 --> 00:45:26,240
+release we we don't see this issue but
+
+1001
+00:45:26,240 --> 00:45:28,400
+this is the currently uh the pinning
+
+1002
+00:45:28,400 --> 00:45:30,960
+issue that we
+
+1003
+00:45:32,640 --> 00:45:35,920
+have okay and the sixth uh thing is the
+
+1004
+00:45:35,920 --> 00:45:37,880
+it is meant for the io intensive
+
+1005
+00:45:37,880 --> 00:45:39,960
+application now as someone was
+
+1006
+00:45:39,960 --> 00:45:43,920
+mentioning um what will happen uh so
+
+1007
+00:45:43,920 --> 00:45:46,599
+this is only give you benefit when you
+
+1008
+00:45:46,599 --> 00:45:48,520
+have like IO intensive application and
+
+1009
+00:45:48,520 --> 00:45:50,480
+this IO intensive application basically
+
+1010
+00:45:50,480 --> 00:45:53,559
+means that your application in doing
+
+1011
+00:45:53,559 --> 00:45:55,599
+blocking calls external blocking calls
+
+1012
+00:45:55,599 --> 00:45:58,319
+be it Database Network calls file right
+
+1013
+00:45:58,319 --> 00:45:59,800
+anything but if you're doing some
+
+1014
+00:45:59,800 --> 00:46:03,319
+inmemory calls right or you if you're
+
+1015
+00:46:03,319 --> 00:46:05,839
+there is like a CPU intensive task then
+
+1016
+00:46:05,839 --> 00:46:07,680
+it is not recommended to use Virtual
+
+1017
+00:46:07,680 --> 00:46:10,400
+thread uh you can just use the your
+
+1018
+00:46:10,400 --> 00:46:12,200
+platform threads and then be done with
+
+1019
+00:46:12,200 --> 00:46:14,960
+it also it's like virtual threads are
+
+1020
+00:46:14,960 --> 00:46:17,599
+not faster than the platform threads but
+
+1021
+00:46:17,599 --> 00:46:19,839
+it just the way it handles is is
+
+1022
+00:46:19,839 --> 00:46:22,559
+optimized than the platform threads so
+
+1023
+00:46:22,559 --> 00:46:24,800
+don't use for the CPU intensive
+
+1024
+00:46:24,800 --> 00:46:29,240
+application and don't use uh in parallel
+
+1025
+00:46:29,240 --> 00:46:32,280
+stream you should not make any um
+
+1026
+00:46:32,280 --> 00:46:33,599
+external call actually in the parallel
+
+1027
+00:46:33,599 --> 00:46:35,960
+stream but uh just calling it
+
+1028
+00:46:35,960 --> 00:46:40,000
+out so yeah that's mostly it any
+
+1029
+00:46:40,000 --> 00:46:43,240
+questions so
+
+1030
+00:46:54,800 --> 00:46:57,800
+far
+
+1031
+00:46:58,040 --> 00:47:00,800
+audience guys online if you have any
+
+1032
+00:47:00,800 --> 00:47:03,680
+question you can ask so uh one question
+
+1033
+00:47:03,680 --> 00:47:06,200
+right so you said uh should not use
+
+1034
+00:47:06,200 --> 00:47:09,280
+should not cash any expensive object so
+
+1035
+00:47:09,280 --> 00:47:11,160
+and also you said thread local we can
+
+1036
+00:47:11,160 --> 00:47:14,280
+use in our right so what kind of so
+
+1037
+00:47:14,280 --> 00:47:16,559
+usually we will cash simple date format
+
+1038
+00:47:16,559 --> 00:47:18,599
+kind of things right so those things can
+
+1039
+00:47:18,599 --> 00:47:19,800
+be cached
+
+1040
+00:47:19,800 --> 00:47:22,559
+right huh so simple date format the
+
+1041
+00:47:22,559 --> 00:47:24,000
+problem with it is basically it's very
+
+1042
+00:47:24,000 --> 00:47:25,839
+expensive object rather you can go with
+
+1043
+00:47:25,839 --> 00:47:29,160
+the date time formet uh in in place uh
+
+1044
+00:47:29,160 --> 00:47:31,359
+which is kind of a
+
+1045
+00:47:31,359 --> 00:47:34,520
+um lightweight object in in place of the
+
+1046
+00:47:34,520 --> 00:47:37,200
+uh simple date format also you can use
+
+1047
+00:47:37,200 --> 00:47:38,640
+the scope
+
+1048
+00:47:38,640 --> 00:47:40,880
+variable uh you can also read about the
+
+1049
+00:47:40,880 --> 00:47:42,880
+scope variable but uh scope variable is
+
+1050
+00:47:42,880 --> 00:47:45,040
+a way to provide so what it does is just
+
+1051
+00:47:45,040 --> 00:47:48,240
+like the thread local thread local give
+
+1052
+00:47:48,240 --> 00:47:50,359
+so basic local provides the objects for
+
+1053
+00:47:50,359 --> 00:47:52,200
+all the threads which is being used
+
+1054
+00:47:52,200 --> 00:47:54,640
+right similarly you can also use scope
+
+1055
+00:47:54,640 --> 00:47:56,280
+variable which givs the
+
+1056
+00:47:56,280 --> 00:47:58,160
+access to those kind of objects which
+
+1057
+00:47:58,160 --> 00:48:01,319
+are required for multiple
+
+1058
+00:48:01,400 --> 00:48:04,040
+threads so that's the uh solution for it
+
+1059
+00:48:04,040 --> 00:48:06,040
+or that's the alternative a better way
+
+1060
+00:48:06,040 --> 00:48:09,480
+to cat the
+
+1061
+00:48:10,400 --> 00:48:12,520
+objects got
+
+1062
+00:48:12,520 --> 00:48:15,280
+it uh here there are more couple
+
+1063
+00:48:15,280 --> 00:48:17,640
+of
+
+1064
+00:48:17,640 --> 00:48:20,640
+um reference link that I have put it
+
+1065
+00:48:20,640 --> 00:48:22,839
+here uh you can go over this one so it
+
+1066
+00:48:22,839 --> 00:48:24,920
+basically talks about the loom proposal
+
+1067
+00:48:24,920 --> 00:48:26,240
+the second preview
+
+1068
+00:48:26,240 --> 00:48:28,599
+the documentation for the loom uh
+
+1069
+00:48:28,599 --> 00:48:30,720
+detailed notes like how what all things
+
+1070
+00:48:30,720 --> 00:48:33,200
+has happened or what all
+
+1071
+00:48:33,200 --> 00:48:36,119
+um things are going on in terms of loom
+
+1072
+00:48:36,119 --> 00:48:38,240
+and and the scope variable that we
+
+1073
+00:48:38,240 --> 00:48:40,760
+discuss structure concurrency and then
+
+1074
+00:48:40,760 --> 00:48:42,839
+you can also read about the spring boot
+
+1075
+00:48:42,839 --> 00:48:45,800
+adoption after spring boot
+
+1076
+00:48:45,800 --> 00:48:48,559
+3.2.0 uh spring boot is adopting two
+
+1077
+00:48:48,559 --> 00:48:50,440
+virtual thread so there's only one flag
+
+1078
+00:48:50,440 --> 00:48:52,799
+that you need to just enable property
+
+1079
+00:48:52,799 --> 00:48:54,760
+and then it will start uh using the
+
+1080
+00:48:54,760 --> 00:48:57,359
+virtual thread under
+
+1081
+00:48:57,359 --> 00:49:00,559
+all Loom related blog you can also read
+
+1082
+00:49:00,559 --> 00:49:01,720
+about this 1 million concurrent
+
+1083
+00:49:01,720 --> 00:49:03,640
+connection and then there's a GitHub
+
+1084
+00:49:03,640 --> 00:49:06,440
+link for this particular demo we'll put
+
+1085
+00:49:06,440 --> 00:49:11,000
+it on on the um YouTube as well for in
+
+1086
+00:49:11,000 --> 00:49:14,520
+the pin comment so you guys can take a
+
+1087
+00:49:14,640 --> 00:49:18,240
+look cool if no question then we can I
+
+1088
+00:49:18,240 --> 00:49:20,319
+have one uh question regarding parel
+
+1089
+00:49:20,319 --> 00:49:22,280
+stream you mentioned that uh we should
+
+1090
+00:49:22,280 --> 00:49:24,200
+not be using it I want to can you
+
+1091
+00:49:24,200 --> 00:49:26,160
+explain more
+
+1092
+00:49:26,160 --> 00:49:29,640
+on that oh parall basically uh okay so
+
+1093
+00:49:29,640 --> 00:49:32,040
+parallel stream if you are using virtual
+
+1094
+00:49:32,040 --> 00:49:34,839
+threads right so those
+
+1095
+00:49:34,839 --> 00:49:37,040
+are par stream what it does it basically
+
+1096
+00:49:37,040 --> 00:49:40,040
+use the uh thread pull
+
+1097
+00:49:40,040 --> 00:49:42,640
+um and when it calls the so virtual
+
+1098
+00:49:42,640 --> 00:49:44,799
+threads is something which makes the
+
+1099
+00:49:44,799 --> 00:49:48,119
+external call right so you mostly use
+
+1100
+00:49:48,119 --> 00:49:51,000
+Virtual thread in order to do a blocking
+
+1101
+00:49:51,000 --> 00:49:52,960
+operation and if you are making a
+
+1102
+00:49:52,960 --> 00:49:54,200
+blocking
+
+1103
+00:49:54,200 --> 00:49:56,359
+operation um
+
+1104
+00:49:56,359 --> 00:49:58,000
+then it it takes
+
+1105
+00:49:58,000 --> 00:50:00,440
+uh it need to understand because it
+
+1106
+00:50:00,440 --> 00:50:02,720
+already understands the the async way of
+
+1107
+00:50:02,720 --> 00:50:04,720
+handling things so if you're using
+
+1108
+00:50:04,720 --> 00:50:07,200
+within the parallel stream it will not
+
+1109
+00:50:07,200 --> 00:50:09,440
+be beneficial you can also read about
+
+1110
+00:50:09,440 --> 00:50:13,000
+the parallel stream not using the um any
+
+1111
+00:50:13,000 --> 00:50:17,640
+kind of external call or the uh doing
+
+1112
+00:50:17,640 --> 00:50:20,000
+things which is required to call the or
+
+1113
+00:50:20,000 --> 00:50:22,880
+external Services I can put a link over
+
+1114
+00:50:22,880 --> 00:50:26,160
+here because like a big question okay
+
+1115
+00:50:26,160 --> 00:50:28,920
+okay thank you
+
+1116
+00:50:28,920 --> 00:50:32,079
+thanks I have one
+
+1117
+00:50:32,079 --> 00:50:35,520
+question second when we
+
+1118
+00:50:35,520 --> 00:50:40,799
+second so how many platform threads 200
+
+1119
+00:50:40,799 --> 00:50:43,720
+how many 200 200 yes so the question was
+
+1120
+00:50:43,720 --> 00:50:45,520
+how many platform thread was used when
+
+1121
+00:50:45,520 --> 00:50:47,880
+we ran the virtual thread example like
+
+1122
+00:50:47,880 --> 00:50:50,040
+when we started to use Virtual threads
+
+1123
+00:50:50,040 --> 00:50:54,480
+so by default underneath tomat uh uses
+
+1124
+00:50:54,480 --> 00:50:57,400
+200 uh but yeah I can also can verify
+
+1125
+00:50:57,400 --> 00:51:00,480
+that but it should be around that
+
+1126
+00:51:00,480 --> 00:51:05,000
+only when we don't use Virtual how
+
+1127
+00:51:05,000 --> 00:51:08,359
+many yeah so default thread pool size is
+
+1128
+00:51:08,359 --> 00:51:10,680
+200 you can also configure it so that's
+
+1129
+00:51:10,680 --> 00:51:13,839
+not the issue
+
+1130
+00:51:17,520 --> 00:51:20,520
+uh
+
+1131
+00:51:20,920 --> 00:51:24,280
+um sorry
+
+1132
+00:51:24,359 --> 00:51:27,359
+hello
+
+1133
+00:51:29,440 --> 00:51:33,319
+hello I think I lost
+
+1134
+00:51:43,559 --> 00:51:48,000
+you uh are you able to hear me yes can
+
+1135
+00:51:48,000 --> 00:51:51,640
+hear you now uh I was asking uh has
+
+1136
+00:51:51,640 --> 00:51:55,040
+virtual threads been adapted I mean uh
+
+1137
+00:51:55,040 --> 00:51:56,640
+you have have any production ready code
+
+1138
+00:51:56,640 --> 00:51:59,599
+which is using virtual threads or it's
+
+1139
+00:51:59,599 --> 00:52:02,480
+too new maybe we have mostly
+
+1140
+00:52:02,480 --> 00:52:06,000
+experimenting and using uh code which is
+
+1141
+00:52:06,000 --> 00:52:08,000
+not in like production but we are
+
+1142
+00:52:08,000 --> 00:52:10,000
+planning to do it uh this
+
+1143
+00:52:10,000 --> 00:52:13,760
+week okay yeah so we already had adopted
+
+1144
+00:52:13,760 --> 00:52:15,119
+the Java
+
+1145
+00:52:15,119 --> 00:52:19,079
+21 uh in couple of project which I'm
+
+1146
+00:52:19,079 --> 00:52:21,359
+like working personally but in terms of
+
+1147
+00:52:21,359 --> 00:52:23,480
+production ready we we're going to do it
+
+1148
+00:52:23,480 --> 00:52:28,480
+uh this week okay okay cor thank
+
+1149
+00:52:32,040 --> 00:52:35,799
+you cool uh I think if no more question
+
+1150
+00:52:35,799 --> 00:52:39,760
+then we can close the
+
+1151
+00:52:40,119 --> 00:52:43,640
+call okay uh so just one announcement uh
+
+1152
+00:52:43,640 --> 00:52:47,280
+so we are organizing the 50th day day
+
+1153
+00:52:47,280 --> 00:52:49,440
+it's going to be our Mega D day we are
+
+1154
+00:52:49,440 --> 00:52:52,000
+targeting the llm related topics to
+
+1155
+00:52:52,000 --> 00:52:54,960
+discuss on the uh that Mega de day uh
+
+1156
+00:52:54,960 --> 00:52:57,559
+it's going to be a one day event so if
+
+1157
+00:52:57,559 --> 00:53:00,160
+you are interested uh you can also
+
+1158
+00:53:00,160 --> 00:53:02,200
+register
+
+1159
+00:53:02,200 --> 00:53:04,880
+or basically it it is there on the
+
+1160
+00:53:04,880 --> 00:53:10,119
+Meetup so feel free to register for
+
+1161
+00:53:15,440 --> 00:53:18,480
+it cool guys uh I really appreciate you
+
+1162
+00:53:18,480 --> 00:53:21,599
+joined uh thank you so much for
+
+1163
+00:53:21,599 --> 00:53:24,160
+joining thank
+
+1164
+00:53:24,160 --> 00:53:27,160
+you
+
