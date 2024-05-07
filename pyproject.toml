@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "llm-video-timeline-description"
+version = "0.1.0"
+description = ""
+authors = ["Amar Prakash Pandey <amar.om1994@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
