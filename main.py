@@ -1,5 +1,5 @@
 from message import Message
-from llm_model import UndercoverLLMAgent
+from llm import UndercoverLLMAgent
 from utils import clean_srt_content, get_time_bucketing
 
 
