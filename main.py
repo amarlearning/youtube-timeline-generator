@@ -1,6 +1,7 @@
 from message import Message
 from llm import UndercoverLLMAgent
 from utils import clean_srt_content, get_time_bucketing
+from video_srt import get_srt_from_youtube_video
 
 
 def main():
@@ -18,7 +19,10 @@ def main():
         model_name=model_name, system_prompt=system_prompt, api_endpoint=api_endpoint)
 
     system_prompt_aggregation = '''
-       Being a language expert please aggregate the below time intervals into 5-10 buckets with short summary of topic discussed in the conversation in a phrase. 
+       Aggregate the below time intervals into only 5 to 10 buckets over the entire time period. 
+       Each interval should contain a short summary(in a single phrase) of topic discussed in the conversation.
+       Create a new bucket when there is a change in the topic.
+       Do not exceed the timestamps given by the user while bucketing.
             Example, 
             00:01:06 - 00:01:35 = Introduction 
             00:01:35 - 00:02:47 = Overview of civil engineering
@@ -27,7 +31,9 @@ def main():
     agent2 = UndercoverLLMAgent(
         model_name=model_name, system_prompt=system_prompt_aggregation, api_endpoint=api_endpoint)
 
-    split_srt_content = clean_srt_content(input_file="main_srt.srt")
+    srt_content = get_srt_from_youtube_video(
+        video_url="")
+    split_srt_content = clean_srt_content(srt_content=srt_content)
 
     time_buckets = get_time_bucketing(split_srt_content, agent)
     print(f"time_buckets: {time_buckets}")
