@@ -4,6 +4,7 @@ import requests
 from message import Message, MessageEncoder
 
 
+
 class UndercoverLLMAgent:
     def __init__(self, model_name, system_prompt, api_endpoint):
         self.model_name = model_name
