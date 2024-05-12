@@ -549,11 +549,7 @@ elif [ "$interactive" -eq 1 ]; then
     # * prompt type and reverse prompt
 
     if [[ $repo =~ ^https://huggingface\.co/second-state ]]; then
-        readme_url="$repo/resolve/main/README.md"
-
-        # Download the README.md file
-        curl -s $readme_url -o README.md
-
+        
         # Extract the "Prompt type: xxxx" line
         prompt_type_line=$(grep -i "Prompt type:" README.md)
 
@@ -575,8 +571,6 @@ elif [ "$interactive" -eq 1 ]; then
             printf "[+] No reverse prompt required\n"
         fi
 
-        # Clean up
-        rm README.md
     else
         printf "[+] Please select a number from the list below:\n"
         printf "    The definitions of the prompt types below can be found at https://github.com/LlamaEdge/LlamaEdge/raw/main/api-server/chat-prompts/README.md\n\n"
