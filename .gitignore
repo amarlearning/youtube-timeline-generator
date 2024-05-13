@@ -1,3 +1,5 @@
 *.gguf
 __pycache__/
 .idea
+*.wasm
+scripts/chatbot-ui
