@@ -8,48 +8,89 @@
 </head>
 
 <body>
+    <noscript>
+        <h2 style="color: #ff0000">Seems your browser doesn't
+            supportJavascript! Websocket relies on Javascript being enabled.
+            Pleaseenable Javascript and reload this page!</h2>
+    </noscript>
 
-    <div class="container">
-        <h1 class="mt-5">LLM Video Timeline Description</h1>
-        <!-- Form to take video url input -->
-        <form class="mt-4">
-            <div class="mb-3">
-                <input type="url" id="video_url" name="video_url" class="form-control" placeholder="Youtube video link"
-                    required pattern="https?://www\.youtube\.com/.*">
+    <div class="container modified">
+        <!-- Header section -->
+        <header>
+            <span>LLM Video Timeline Description</span> <span class="github-username">Github:
+                <a href="http://github.com/amarlearning" target="_blank">@sahajsoft</a>
+            </span>
+        </header>
+        <!-- Jumbotron -->
+        <div class="jumbotron extension">
+            <h2>LLM Video Timeline Description</h2>
+            <p>
+                Generating youtube video <strong>summary</strong> & <strong>timeline</strong> description using LLMs.
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </p>
+            <div class="button-link">
+                <a href="https://github.com/sahajsoft/llm-video-timeline-description" target="_blank">
+                    <button type="button" class="course btn btn-lg btn-success">Github
+                        Code Link</button>
+                </a>
             </div>
-            <div class="d-flex align-items-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <div id="spinner" class="spinner-border text-primary ml-20" style="margin-left: 15px; display: none">
+            <p class="part">Powered by LLMs &amp; Machine Mischief</p>
+        </div>
+        <section class="application-section">
+            <div id="main-content" class="container">
+                <!-- Form section -->
+                <form class="row">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <input type="url" id="video_url" name="video_url" class="form-control"
+                                placeholder="youtube video link.." required pattern="https?://www\.youtube\.com/.*">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md btn-primary custom-badge-button">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Response section -->
+                <div id="response">
+                    <h3 class="title">Summary</h3>
+                    <div id="summary" class="response-data">
+                        <span class="copy-icon" data-copy-target="#summary-content">📋</span>
+                        <div id="summary-content"></div>
+                    </div>
+                    <h3 class="title">Timeline</h3>
+                    <div id="timeline" class="response-data">
+                        <span class="copy-icon" data-copy-target="#timeline-content">📋</span>
+                        <div id="timeline-content"></div>
+                    </div>
+                </div>
+                <!-- Toast for text copied to clipboard -->
+                <div id="copy-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                    data-autohide="true" data-delay="5000">
+                    <div class="toast-body">
+                        Text copied to clipboard!
+                    </div>
                 </div>
             </div>
-        </form>
-        <!-- Resposne contianer -->
-        <div id="response">
-            <h3 class="title">Summary</h3>
-            <div id="summary" class="response-data">
-                <span class="copy-icon" data-copy-target="#summary-content">📋</span>
-                <div id="summary-content"></div>
-            </div>
-            <h3 class="title">Timeline</h3>
-            <div id="timeline" class="response-data">
-                <span class="copy-icon" data-copy-target="#timeline-content">📋</span>
-                <div id="timeline-content"></div>
-            </div>
-        </div>
-        <!-- Toast for copy to clipboard -->
-        <div id="copy-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true"
-            data-delay="5000">
-            <div class="toast-header">
-                <strong class="mr-auto">Agent</strong>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Text copied to clipboard.
-            </div>
-        </div>
+        </section>
+        <div class="block"></div>
     </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container modified">
+            <p class="text-footer">
+                Assembled with <svg viewBox="0 0 1792 1792" preserveAspectRatio="xMidYMid meet"
+                    xmlns="http://www.w3.org/2000/svg" style="height: 0.8rem;">
+                    <path
+                        d="M896 1664q-26 0-44-18l-624-602q-10-8-27.5-26T145 952.5 77 855 23.5 734 0 596q0-220 127-344t351-124q62 0 126.5 21.5t120 58T820 276t76 68q36-36 76-68t95.5-68.5 120-58T1314 128q224 0 351 124t127 344q0 221-229 450l-623 600q-18 18-44 18z"
+                        fill="#e25555"></path>
+                </svg> &amp; <code>CTRL+C & V</code> in Sahaj
+            </p>
+        </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="static/script.js"></script>

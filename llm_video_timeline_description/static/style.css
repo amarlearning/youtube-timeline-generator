@@ -20,6 +20,12 @@
     margin-top: 1vw;
 }
 
+#summary-content, #timeline-content {
+	text-align: justify;
+    width: 95%;
+    font-size: 14px;
+}
+
 #summary, #timeline {
     position: relative;
 }
@@ -35,4 +41,145 @@
     position: fixed;
     top: 50px;
     right: 35px;
+}
+
+
+/* new css */
+
+
+.extension p,
+.extension>h2 {
+	font-weight: 400;
+	text-align: center
+}
+
+.button-link,
+.message-form,
+.modified {
+	margin-left: auto;
+	margin-right: auto
+}
+
+body {
+	font-family: Cousine, monospace
+}
+
+.modified {
+	width: 60%
+}
+
+a {
+	text-decoration: none!important;
+	cursor: pointer
+}
+
+header {
+	width: 100%;
+	height: 65px;
+	padding: 0 10px;
+	border-bottom: 1px solid #ddd
+}
+
+header>span {
+	font-size: 22px;
+	line-height: 70px;
+	color: #5D5D5D
+}
+
+.github-username {
+	float: right;
+	font-size: 16px;
+	line-height: 80px
+}
+
+.extension {
+	margin-top: 50px;
+	padding-top: 30px
+}
+
+.extension>h2 {
+	font-size: 45px;
+	font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif
+}
+
+.extension p {
+	font-size: 18px;
+	color: #555;
+	margin-top: 20px
+}
+
+i {
+	font-size: 24px!important
+}
+
+.button-link {
+	width: 230px;
+	margin-top: 30px
+}
+
+.course {
+	height: 60px
+}
+
+.custom-badge-button {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	float: right;
+	margin-right: 10px;
+	width: 100%;
+}
+
+.extension>.part {
+	text-align: center;
+	font-size: 13px;
+	color: #777;
+	margin-top: 8px;
+	font-weight: 100
+}
+
+.container {
+	padding: 5px!important
+}
+
+.block {
+	width: 100%;
+	height: 130px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+	border-top: 1px solid #DDD;
+	background-color: white;
+}
+
+.user-information {
+	text-align: center;
+	background-color: #222;
+	color: #fff;
+	padding-top: 10px!important;
+	padding-bottom: 10px!important
+}
+
+.text-footer {
+	text-align: center;
+	line-height: 70px;
+	color: #575757;
+	font-size: 12px
+}
+
+.text-footer>a>i {
+	font-size: 12px!important
+}
+
+.text-footer>a:hover {
+	text-decoration: underline!important
+}
+
+@media screen and (max-width:700px) {
+	.modified {
+		width: 100%
+	}
 }
