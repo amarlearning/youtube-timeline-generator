@@ -2,7 +2,7 @@
 name = "llm-video-timeline-description"
 version = "0.1.0"
 description = ""
-authors = ["Amar Prakash Pandey <amar.om1994@gmail.com>"]
+authors = ["Amar Prakash Pandey", "Shruti Dhavalikar"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
