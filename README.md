@@ -31,6 +31,16 @@ This project is aimed at generating a video timeline description using LLMs. It 
 sh main.sh
 ```
 
+## Usage via Docker
+
+```bash
+docker build -t llm-video-timeline:dev .
+```
+
+```bash
+docker run -p 8000:8000 llm-video-timeline:dev
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
