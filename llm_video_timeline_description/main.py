@@ -9,7 +9,8 @@ from llm_video_timeline_description.video_srt import get_srt_from_youtube_video
 
 app = Flask(__name__)
 time_bucketing_agent = UndercoverLLMAgent(system_prompt=SYSTEM_QUERY_PROMPT)
-time_bucketing_aggregation_agent = UndercoverLLMAgent(system_prompt=SYSTEM_AGGREGATION_PROMPT)
+time_bucketing_aggregation_agent = UndercoverLLMAgent(
+    system_prompt=SYSTEM_AGGREGATION_PROMPT)
 summary_agent = UndercoverLLMAgent(system_prompt=SUMMARY_PROMPT)
 
 
@@ -21,23 +22,30 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit_video():
     video_url = request.form['video_url']
+
     srt_content = get_srt_from_youtube_video(video_url)
+
     split_description_content = split_and_clean_srt_content(srt_content)
-    time_buckets = get_time_bucketing(split_description_content, time_bucketing_agent)
+
+    time_buckets = get_time_bucketing(
+        split_description_content, time_bucketing_agent)
     print(f"time_buckets: {time_buckets}")
+
     aggregated_time_buckets = time_bucketing_aggregation_agent.find_answer_for(
         Message(role="user", content=time_buckets)
     ).content
-    print(f"aggregated_time_buckets: {aggregated_time_buckets}")
 
     processed_response = postprocessing(aggregated_time_buckets)
-    print(f"processed_response: {processed_response}")
 
-    # summary = summary_agent.find_answer_for(
-    #     Message(role="user", content=time_buckets)
-    # ).content
-    # print(f"summary: {summary}")
-    return "yo", 200
+    summary = summary_agent.find_answer_for(
+        Message(role="user", content=time_buckets)
+    ).content
+
+    response = {
+        "summary": summary,
+        "timeline": processed_response
+    }
+    return response, 200
 
 
 if __name__ == "__main__":
