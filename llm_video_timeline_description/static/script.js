@@ -36,6 +36,8 @@ $(".copy-icon").on("click", function () {
   var copyTarget = $(this).data("copy-target");
   var textToCopy = $(copyTarget).html();
 
+  var textToCopy = textToCopy.replace(/<br>/g, "");
+
   navigator.clipboard
     .writeText(textToCopy)
     .then(function () {
