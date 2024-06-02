@@ -21,7 +21,8 @@ SYSTEM_AGGREGATION_PROMPT = '''
         3. Generate the entire timeline with the start timestamp of aggregated segment and a concise description of the topic discussed in no more than 5 words.
         4. Ensure the descriptions are clear and logically flow with the video's content.
         
-        Strictly generate the output in the output_format given below and the number of entries should strictly be more than 2 and less than 10.
+        The number of entries in the output should strictly be more than 2 and less than 10.
+        Strictly generate the output in the output_format given below.
         output_format:
         <start_timestamp>: <brief_topic_description>
         
