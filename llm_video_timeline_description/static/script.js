@@ -9,7 +9,7 @@ $(document).ready(function () {
       hideLoadingSpinner();
       if (data) {
         $("#response").css("display", "block");
-        $("#summary-content").html(data.summary);
+        $("#summary-content").html(data.summary.replace(/\n/g, "<br>"));
         $("#timeline-content").html(data.timeline.replace(/\n/g, "<br>"));
       }
     })
