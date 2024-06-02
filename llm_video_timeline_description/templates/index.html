@@ -11,6 +11,7 @@
 
     <div class="container">
         <h1 class="mt-5">LLM Video Timeline Description</h1>
+        <!-- Form to take video url input -->
         <form class="mt-4">
             <div class="mb-3">
                 <input type="url" id="video_url" name="video_url" class="form-control" placeholder="Youtube video link"
@@ -22,6 +23,7 @@
                 </div>
             </div>
         </form>
+        <!-- Resposne contianer -->
         <div id="response">
             <h3 class="title">Summary</h3>
             <div id="summary" class="response-data">
@@ -34,6 +36,7 @@
                 <div id="timeline-content"></div>
             </div>
         </div>
+        <!-- Toast for copy to clipboard -->
         <div id="copy-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true"
             data-delay="5000">
             <div class="toast-header">
