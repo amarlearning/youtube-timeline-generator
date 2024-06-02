@@ -6,7 +6,6 @@ $(document).ready(function () {
     showLoadingSpinner();
 
     $.post("/submit", { video_url: videoUrl }, function (data) {
-      hideLoadingSpinner();
       if (data) {
         $("#response").css("display", "block");
         $("#summary-content").html(data.summary.replace(/\n/g, "<br>"));
@@ -23,13 +22,15 @@ $(document).ready(function () {
 });
 
 function showLoadingSpinner() {
-  $("#spinner").css("display", "block");
-  $("button[type='submit']").prop("disabled", true);
+  $(".custom-badge-button").html(
+    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> weaving...'
+  );
+  $("input").prop("disabled", true);
 }
 
 function hideLoadingSpinner() {
-  $("#spinner").css("display", "none");
-  $("button[type='submit']").prop("disabled", false);
+  $(".custom-badge-button").html("Submit");
+  $("input").prop("disabled", false);
 }
 
 $(".copy-icon").on("click", function () {
