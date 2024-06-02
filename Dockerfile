@@ -9,7 +9,7 @@ RUN pip install poetry
 
 RUN poetry install
 
-EXPOSE 8000
+EXPOSE 5443
 
 CMD ["poetry", "run", "sh", "main.sh"]
 
