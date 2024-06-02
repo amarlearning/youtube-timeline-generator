@@ -12,3 +12,5 @@ RUN poetry install
 EXPOSE 8000
 
 CMD ["poetry", "run", "sh", "main.sh"]
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl --fail http://localhost:8000/health || exit 1

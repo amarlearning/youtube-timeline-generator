@@ -1,41 +1,44 @@
-from llm_video_timeline_description.message import Message
 import re
 
+from llm_video_timeline_description.postprocessing import UndercoverPostprocessingAgent
 
-def split_and_clean_srt_content(srt_content):
-    cleaned_content = ""
-    split_srt = []
-    pattern_second_timestamp = r'(-->\s\d{2}:\d{2}:\d{2},\d{3})'
-    pattern_comma_three_digits = r',\d{3}'
+
+def clean_srt_content(srt_content):
+    cleaned_srt_content = ""
+    pattern_for_second_timestamp = r'(-->\s\d{2}:\d{2}:\d{2},\d{3})'
+    pattern_for_comma_followed_by_three_digits = r',\d{3}'
     for line in srt_content.splitlines():
         stripped_line = line.strip()
         if not stripped_line or stripped_line.isdigit():
-            cleaned_content += "\n"
+            cleaned_srt_content += "\n"
             continue
-        stripped_line_with_space = stripped_line + " "
-        line_with_one_timestamp = re.sub(
-            pattern_second_timestamp, '', stripped_line_with_space)
-        processed_line = re.sub(
-            pattern_comma_three_digits, '', line_with_one_timestamp)
-        cleaned_content += processed_line
-        if len(cleaned_content) > 7950:
-            split_srt.append(cleaned_content)
-            cleaned_content = ""
-    split_srt.append(cleaned_content)
-    return split_srt
+        line_with_appended_space = stripped_line + " "
+        line_without_second_timestamp = re.sub(
+            pattern_for_second_timestamp, '', line_with_appended_space)
+        line_without_comma_and_three_digits = re.sub(
+            pattern_for_comma_followed_by_three_digits, '', line_without_second_timestamp)
+        cleaned_srt_content += line_without_comma_and_three_digits
+    return cleaned_srt_content
 
 
-def get_time_bucketing(split_srt_content, agent):
-    model_answers = list(
-        map(
-            lambda srt_chunk: agent.find_answer_for(
-                Message(
-                    role="user",
-                    content=srt_chunk
-                )
-            ).content,
-            split_srt_content
-        )
-    )
-    time_buckets = '\n'.join(model_answers)
-    return time_buckets
+def split_cleaned_content(cleaned_srt_content):
+    split_srt_content = []
+    while len(cleaned_srt_content) > 7950:
+        split_srt_content.append(cleaned_srt_content[:7950])
+        cleaned_srt_content = cleaned_srt_content[7950:]
+    split_srt_content.append(cleaned_srt_content)
+    return split_srt_content
+
+
+def process_srt_content(srt_content):
+    cleaned_content = clean_srt_content(srt_content)
+    split_content = split_cleaned_content(cleaned_content)
+    return split_content
+
+
+def clean_aggregated_timeline(data):
+    return UndercoverPostprocessingAgent(data) \
+        .filter_lines_with_at_least_one_timestamp() \
+        .remove_enumeration_before_first_timestamp() \
+        .remove_second_timestamp() \
+        .remove_colon_after_last_timestamp().text
