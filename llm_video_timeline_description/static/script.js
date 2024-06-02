@@ -23,13 +23,15 @@ $(document).ready(function () {
 
 function showLoadingSpinner() {
   $(".custom-badge-button").html(
-    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> weaving...'
+    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
   );
+  $(".custom-badge-button").prop("disabled", true);
   $("input").prop("disabled", true);
 }
 
 function hideLoadingSpinner() {
   $(".custom-badge-button").html("Submit");
+  $(".custom-badge-button").prop("disabled", false);
   $("input").prop("disabled", false);
 }
 
