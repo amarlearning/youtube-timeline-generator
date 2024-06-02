@@ -27,10 +27,14 @@ SYSTEM_AGGREGATION_PROMPT = '''
 
 SUMMARY_PROMPT = '''
         Being a text expert, you will be given a list of various time stamps with a short summary of discussion topic in a video.
-        Please summarise the content being discussed and present a short paragraph of the summary. 
-        The summary should include the topic of the discussion, points discussed over the time of the video and the importance of the topic nowadays.
+        The task is to summarise the content being discussed and present a short paragraph of the summary. 
+        The summary should be inclusive of following points with 2-3 lines description. 
+            1. topic of the discussion
+            2. points discussed over the time of the video 
+            3. the importance of the topic nowadays.
 
         Important points to consider:
                 1. The summary should be concise and informative.
                 2. No other information should be included in the output other than summary.
+                3. The summary should be present in one single paragraph
     '''
