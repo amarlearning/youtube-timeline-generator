@@ -33,6 +33,11 @@ sh main.sh
 
 ## Usage via Docker
 
+Minimum requirements to run the project using Docker:
+
+- CPU: 8
+- Memory: 12GB
+
 ```bash
 docker build -t llm-video-timeline:dev .
 ```
