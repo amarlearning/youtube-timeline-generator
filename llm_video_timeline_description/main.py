@@ -9,10 +9,6 @@ from llm_video_timeline_description.video_srt import get_srt_from_youtube_video
 from llm_video_timeline_description.postprocessing import UndercoverPostprocessingAgent
 
 app = Flask(__name__)
-time_bucketing_agent = UndercoverLLMAgent(system_prompt=SYSTEM_QUERY_PROMPT)
-time_bucketing_aggregation_agent = UndercoverLLMAgent(
-    system_prompt=SYSTEM_AGGREGATION_PROMPT)
-summary_agent = UndercoverLLMAgent(system_prompt=SUMMARY_PROMPT)
 
 
 @app.route("/")
@@ -29,9 +25,10 @@ def submit_video():
     split_description_content = split_and_clean_srt_content(srt_content)
 
     time_buckets = get_time_bucketing(
-        split_description_content, time_bucketing_agent)
+        split_description_content, UndercoverLLMAgent(system_prompt=SYSTEM_QUERY_PROMPT))
 
-    aggregated_time_buckets = time_bucketing_aggregation_agent.find_answer_for(
+    aggregated_time_buckets = UndercoverLLMAgent(
+        system_prompt=SYSTEM_AGGREGATION_PROMPT).find_answer_for(
         Message(role="user", content=time_buckets)
     ).content
 
@@ -41,7 +38,7 @@ def submit_video():
         .remove_second_timestamp() \
         .remove_colon_after_last_timestamp().text
 
-    summary = summary_agent.find_answer_for(
+    summary = UndercoverLLMAgent(system_prompt=SUMMARY_PROMPT).find_answer_for(
         Message(role="user", content=time_buckets)
     ).content
 
