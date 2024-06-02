@@ -13,7 +13,6 @@ time_bucketing_agent = UndercoverLLMAgent(system_prompt=SYSTEM_QUERY_PROMPT)
 time_bucketing_aggregation_agent = UndercoverLLMAgent(
     system_prompt=SYSTEM_AGGREGATION_PROMPT)
 summary_agent = UndercoverLLMAgent(system_prompt=SUMMARY_PROMPT)
-postprocessing_agent = UndercoverPostprocessingAgent()
 
 
 @app.route("/")
@@ -31,20 +30,20 @@ def submit_video():
 
     time_buckets = get_time_bucketing(
         split_description_content, time_bucketing_agent)
-    print(f"time_buckets: {time_buckets}")
 
     aggregated_time_buckets = time_bucketing_aggregation_agent.find_answer_for(
         Message(role="user", content=time_buckets)
     ).content
-    print(f"aggregated_time_buckets: {aggregated_time_buckets}")
 
-    processed_timeline = postprocessing_agent.perform_postprocessing(aggregated_time_buckets)
-    print(f"processed_timeline: {processed_timeline}")
+    processed_timeline = UndercoverPostprocessingAgent(aggregated_time_buckets) \
+        .filter_lines_with_at_least_one_timestamp() \
+        .remove_enumeration_before_first_timestamp() \
+        .remove_second_timestamp() \
+        .remove_colon_after_last_timestamp().text
 
     summary = summary_agent.find_answer_for(
         Message(role="user", content=time_buckets)
     ).content
-    print(f"summary: {summary}")
 
     response = {
         "summary": summary,
