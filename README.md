@@ -5,8 +5,7 @@
 This project is aimed at generating a video timeline description using LLMs. It allows users to generate summary and descriptive timelines for videos, making it easier to navigate through video.
 
 # Screenshot
-
-![cover image](./assets/cover.png)
+<video src="./assets/export.MP4" controls></video>
 
 ## Project Setup
 
