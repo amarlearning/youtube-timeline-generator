@@ -4,8 +4,9 @@
 
 This project is aimed at generating a video timeline description using LLMs. It allows users to generate summary and descriptive timelines for videos, making it easier to navigate through video.
 
-# Screenshot
-<video src="./assets/export.MP4" controls></video>
+# Demo
+
+https://github.com/sahajsoft/llm-video-timeline-description/assets/9383897/95dbe18a-75c7-4483-b70d-0fb18318bb3e
 
 ## Project Setup
 
@@ -28,7 +29,7 @@ This project is aimed at generating a video timeline description using LLMs. It 
 
 ### Running the project for the first time?
 
-1. Run the helper script for deploying LlamaEdge API Server on this machine and starting the server:
+1. Run the helper script for deploying the LlamaEdge API Server on this machine and starting the server:
 
 ```bash
 sh main.sh
@@ -46,7 +47,7 @@ Before you start, ensure your system meets the following minimum requirements to
 
 ### Building the Docker Image
 
-First, you need to build the Docker image for the project. Navigate to the project's root directory and run the following command:
+First, you have to build the Docker image for the project. Navigate to the project's root directory and run the following command:
 
 ```bash
 docker build -t llm-video-timeline:dev .
