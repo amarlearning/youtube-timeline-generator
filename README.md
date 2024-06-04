@@ -6,7 +6,7 @@ This project is aimed at generating a video timeline description using LLMs. It 
 
 # Demo
 
-https://github.com/sahajsoft/llm-video-timeline-description/assets/9383897/95dbe18a-75c7-4483-b70d-0fb18318bb3e
+https://github.com/sahajsoft/llm-video-timeline-description/assets/9383897/65da6fa1-7029-4548-8ab7-8fd23c8c249a
 
 ## Project Setup
 
