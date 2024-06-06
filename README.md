@@ -63,14 +63,19 @@ docker run -p 5443:5443 llm-video-timeline:dev
 
 The application can be reached at `http://localhost:5443`.
 
+# System Diagram
+
+![diagram](./assets/architechture-diagram-video-timeline-splitter_latest.png)
+
 ## Components
+
 - UI
-   - Bootstrap and jQuery
+  - Bootstrap and jQuery
 - Backend
-   - APIs exposed via Flask 
+  - APIs exposed via Flask
 - LLM Agent via LamaEdge
-   - LLM model - [SanctumAI/Meta-Llama-3-8B-Instruct-GGUF](https://huggingface.co/SanctumAI/Meta-Llama-3-8B-Instruct-GGUF/)
-   - Model exposed over APIs using [LlamaEdge](https://github.com/LlamaEdge/LlamaEdge) 
+  - LLM model - [SanctumAI/Meta-Llama-3-8B-Instruct-GGUF](https://huggingface.co/SanctumAI/Meta-Llama-3-8B-Instruct-GGUF/)
+  - Model exposed over APIs using [LlamaEdge](https://github.com/LlamaEdge/LlamaEdge)
 
 ## Features & Extensions
 
@@ -79,6 +84,7 @@ The application can be reached at `http://localhost:5443`.
 - [x] Easy copy-paste of summary and description
 
 #### Extensions
+
 - [ ] History page - showing past requests
 - [ ] More unit and Integration tests
 - [ ] Improve response time
