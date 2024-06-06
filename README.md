@@ -63,6 +63,17 @@ docker run -p 5443:5443 llm-video-timeline:dev
 
 The application can be reached at `http://localhost:5443`.
 
+## Features & Extensions
+
+- [x] User-friendly interface
+- [x] Validations on user input
+- [x] Easy copy-paste of summary and description
+
+#### Extensions
+- [ ] History page - showing past requests
+- [ ] More unit and Integration tests
+- [ ] Improve response time
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
