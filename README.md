@@ -6,6 +6,8 @@ This project is aimed at generating a video timeline description using LLMs. It 
 
 # Demo
 
+![demo](./assets/cover.png)
+
 ## Project Setup
 
 1. Install Poetry:
