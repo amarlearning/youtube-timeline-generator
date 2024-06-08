@@ -32,7 +32,7 @@ This project is aimed at generating a video timeline description using LLMs. It 
 1. Run the helper script for deploying the LlamaEdge API Server on this machine and starting the server:
 
 ```bash
-sh main.sh
+sh start.sh
 ```
 
 The application can be reached at `http://localhost:5443`.
