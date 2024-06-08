@@ -1,4 +1,4 @@
-from llm_video_timeline_description.utils import process_srt_content, clean_srt_content, split_cleaned_content, clean_aggregated_timeline
+from youtube_timeline_generator.utils import process_srt_content
 
 
 def test_process_data():

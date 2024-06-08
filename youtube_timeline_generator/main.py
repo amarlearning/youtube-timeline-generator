@@ -1,10 +1,10 @@
 from flask import Flask
 from flask import render_template, request
 
-from llm_video_timeline_description.logger import get_logger
-from llm_video_timeline_description.utils import clean_aggregated_timeline, process_srt_content
-from llm_video_timeline_description.llm_processing import get_aggregated_time_buckets, get_summary, get_time_bucketing
-from llm_video_timeline_description.video_srt import get_srt_from_youtube_video
+from youtube_timeline_generator.logger import get_logger
+from youtube_timeline_generator.utils import clean_aggregated_timeline, process_srt_content
+from youtube_timeline_generator.llm_processing import get_aggregated_time_buckets, get_summary, get_time_bucketing
+from youtube_timeline_generator.video_srt import get_srt_from_youtube_video
 
 app = Flask(__name__)
 logger = get_logger()

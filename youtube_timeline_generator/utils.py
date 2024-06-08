@@ -1,6 +1,6 @@
 import re
 
-from llm_video_timeline_description.postprocessing import UndercoverPostprocessingAgent
+from youtube_timeline_generator.postprocessing import UndercoverPostprocessingAgent
 
 
 def clean_srt_content(srt_content):

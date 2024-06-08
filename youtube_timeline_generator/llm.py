@@ -1,7 +1,7 @@
 import json
 import requests
 
-from llm_video_timeline_description.message import Message, MessageEncoder
+from youtube_timeline_generator.message import Message, MessageEncoder
 
 
 class UndercoverLLMAgent:

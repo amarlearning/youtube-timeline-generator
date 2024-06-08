@@ -1,12 +1,10 @@
-# LLM Video Timeline Description
+# Youtube Timeline Generator
 
 ## Description
 
 This project is aimed at generating a video timeline description using LLMs. It allows users to generate summary and descriptive timelines for videos, making it easier to navigate through video.
 
 # Demo
-
-https://github.com/sahajsoft/llm-video-timeline-description/assets/9383897/65da6fa1-7029-4548-8ab7-8fd23c8c249a
 
 ## Project Setup
 
@@ -50,7 +48,7 @@ Before you start, ensure your system meets the following minimum requirements to
 First, you have to build the Docker image for the project. Navigate to the project's root directory and run the following command:
 
 ```bash
-docker build -t llm-video-timeline:dev .
+docker build -t youtube-timeline-generator:dev .
 ```
 
 ### Running the Docker Container
@@ -58,7 +56,7 @@ docker build -t llm-video-timeline:dev .
 After the image has been built, you can run the Docker container with the following command:
 
 ```bash
-docker run -p 5443:5443 llm-video-timeline:dev
+docker run -p 5443:5443 youtube-timeline-generator:dev
 ```
 
 The application can be reached at `http://localhost:5443`.

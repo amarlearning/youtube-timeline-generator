@@ -1,9 +1,9 @@
 from unittest.mock import Mock, patch
-from llm_video_timeline_description.video_srt import get_srt_from_youtube_video
+from youtube_timeline_generator.video_srt import get_srt_from_youtube_video
 
 
-@patch('llm_video_timeline_description.video_srt.YouTubeTranscriptApi')
-@patch('llm_video_timeline_description.video_srt.SRTFormatter')
+@patch('youtube_timeline_generator.video_srt.YouTubeTranscriptApi')
+@patch('youtube_timeline_generator.video_srt.SRTFormatter')
 def test_get_srt_from_youtube_video(mock_formatter, mock_transcript_api):
     # Arrange
     mock_transcript = [

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "llm-video-timeline-description"
+name = "youtube-timeline-generator"
 version = "0.1.0"
 description = ""
 authors = ["Amar Prakash Pandey", "Shruti Dhavalikar"]

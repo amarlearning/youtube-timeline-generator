@@ -1,6 +1,6 @@
-from llm_video_timeline_description.llm import UndercoverLLMAgent
-from llm_video_timeline_description.message import Message
-from llm_video_timeline_description.prompt import SUMMARY_PROMPT, SYSTEM_AGGREGATION_PROMPT, SYSTEM_QUERY_PROMPT
+from youtube_timeline_generator.llm import UndercoverLLMAgent
+from youtube_timeline_generator.message import Message
+from youtube_timeline_generator.prompt import SUMMARY_PROMPT, SYSTEM_AGGREGATION_PROMPT, SYSTEM_QUERY_PROMPT
 
 
 def get_time_bucketing(split_srt_content):
